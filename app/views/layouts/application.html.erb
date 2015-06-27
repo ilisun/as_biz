@@ -11,8 +11,6 @@
 
   <body>
 
-
-
     <% if signed_in? %>
       <section class="body">
         <%= render 'layouts/header' %>
@@ -32,8 +30,7 @@
 
   </body>
 
-  <script src="/assets/theme.js"></script>
-  <script src="/assets/theme.custom.js"></script>
-  <script src="/assets/theme.init.js"></script>
+  <%= javascript_include_tag "theme.js" %>
+  <%= javascript_include_tag "theme.init.js" %>
 
 </html>

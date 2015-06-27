@@ -18,7 +18,8 @@
 //= require jquery-datatables-bs3/assets/js/datatables
 //= require tables/examples.datatables.row.with.details
 
-
 //= require turbolinks
 //= require_tree .
+
+
 
