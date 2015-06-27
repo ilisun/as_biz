@@ -14,6 +14,7 @@ gem 'devise'
 gem 'roo'
 gem 'roo-xls'
 gem 'jquery-datatables-rails'
+gem 'font-awesome-rails'
 
 gem 'dotenv'
 gem 'dotenv-deployment', require: 'dotenv/deployment'
