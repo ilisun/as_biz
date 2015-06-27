@@ -15,6 +15,10 @@ gem 'roo'
 gem 'roo-xls'
 gem 'jquery-datatables-rails'
 
+gem 'dotenv'
+gem 'dotenv-deployment', require: 'dotenv/deployment'
+gem 'therubyracer'
+
 
 group :development do
   gem 'capistrano', require: false
