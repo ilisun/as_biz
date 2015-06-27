@@ -11,4 +11,3 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( theme.js )
 Rails.application.config.assets.precompile += %w( theme.init.js )
-Rails.application.config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
