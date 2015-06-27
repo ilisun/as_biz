@@ -11,3 +11,5 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 # Rails.application.config.assets.precompile += %w( theme.js )
 # Rails.application.config.assets.precompile += %w( theme.init.js )
+config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+config.assets.precompile += %w( .svg .eot .woff .ttf )
