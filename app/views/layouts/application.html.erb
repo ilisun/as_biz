@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html class="fixed">
+
+  <head>
+    <title>AsBiz</title>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+
+
+    <% if signed_in? %>
+      <section class="body">
+        <%= render 'layouts/header' %>
+        <div class="inner-wrapper">
+          <%= render 'layouts/sidebar_left' %>
+          <section role="main" class="content-body">
+            <%= yield %>
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
+          </section>
+        </div>
+        <%= render 'layouts/sidebar_right' %>
+      </section>
+    <% else %>
+      <%= yield %>
+    <% end %>
+
+  </body>
+
+  <script src="/assets/theme.js"></script>
+  <script src="/assets/theme.custom.js"></script>
+  <script src="/assets/theme.init.js"></script>
+
+</html>

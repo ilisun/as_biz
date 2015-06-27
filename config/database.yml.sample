@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: as_biz_db
+  username: qna_user
+  password: Qwerty12
+
+test:
+  <<: *default
+  database: as_biz_dbtest
+  username: qna_user
+  password: Qwerty12
+

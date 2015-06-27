@@ -1,0 +1,230 @@
+<%= f.fields_for :client_entity, :html => {id: 'dog_form'} do |ff| %>
+  <hr class="dotted tall">
+  <h4 class="mb-xlg">Контактная информация</h4>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Должность</label>
+    <div class="col-md-6">
+      <%= ff.text_field :cp_position, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Фамилия <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :cp_last_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Имя <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :cp_first_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Отчество <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :cp_middle_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Пол <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.select :cp_gender, [['мужской'], ['женский']], {:include_blank => true}, {:class => 'form-control mb-md'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Дата рождения <span class="required">*</span></label>
+    <div class="col-md-6">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <%= ff.text_field :cp_birthday, class: 'form-control', id: 'date', 'data-plugin-masked-input' => '', 'data-input-mask' => '99/99/9999', :placeholder => '__/__/____' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Основной телефон <span class="required">*</span></label>
+    <div class="col-md-6 control-label">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-phone"></i>
+        </span>
+        <%= ff.text_field :cp_phone, class: 'form-control', 'data-plugin-masked-input' => '', 'data-input-mask' => '(999) 999-99-99', :placeholder => '(123) 123-12-34' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Дополнительный телефон</label>
+    <div class="col-md-6 control-label">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-phone"></i>
+        </span>
+        <%= ff.text_field :cp_alt_phone, class: 'form-control', 'data-plugin-masked-input' => '', 'data-input-mask' => '(999) 999-99-99', :placeholder => '(123) 123-12-34' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Факс</label>
+    <div class="col-md-6 control-label">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-phone"></i>
+        </span>
+        <%= ff.text_field :cp_fax, class: 'form-control', 'data-plugin-masked-input' => '', 'data-input-mask' => '(999) 999-99-99', :placeholder => '(123) 123-12-34' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">E-mail</label>
+    <div class="col-md-6">
+      <%= ff.email_field :cp_email, class: 'form-control' %>
+    </div>
+  </div>
+
+  <hr class="dotted tall">
+  <h4 class="mb-xlg">Юридическая информация</h4>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Наименование организации <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :li_company_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">ИНН <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :li_inn, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">КПП <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :li_kpp, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">ОГРН <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :li_ogrn, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">НДС <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.select :li_nds, [['да', true], ['нет', false]], {:include_blank => true}, {:class => 'form-control mb-md'} %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Юридический адрес <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_area :li_legal_address, class: 'form-control', 'data-plugin-textarea-autosize' => '' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Фактический адрес <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_area :li_actual_address, class: 'form-control', 'data-plugin-textarea-autosize' => '' %>
+    </div>
+  </div>
+
+  <hr class="dotted tall">
+  <h4 class="mb-xlg">Банковские реквзиты</h4>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Расчетный счет <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :bd_checking_account, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">БИК банка <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :bd_bank_bik, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Название банка </label>
+    <div class="col-md-6">
+      <input type="text" class="form-control" id="inputDefault">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Корреспондентский счет </label>
+    <div class="col-md-6">
+      <input type="text" class="form-control" id="inputDefault">
+    </div>
+  </div>
+
+  <hr class="dotted tall">
+  <h4 class="mb-xlg">Руководитель</h4>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Должность <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.select :dc_position, [['генеральный директор'], ['исполнительный директор']], {:include_blank => true}, {:class => 'form-control mb-md'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Фамилия <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :dc_last_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Имя <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :dc_first_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Отчество <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :dc_middle_name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <hr class="dotted tall">
+  <h4 class="mb-xlg">Контактное лицо для сверки взаиморасчетов</h4>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Должность <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :bc_position, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Фамилия <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :bc_last_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Имя <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :bc_first_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Отчество <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%= ff.text_field :bc_middle_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Телефон <span class="required">*</span></label>
+    <div class="col-md-6 control-label">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-phone"></i>
+        </span>
+        <%= ff.text_field :bc_phone, class: 'form-control', 'data-plugin-masked-input' => '', 'data-input-mask' => '(999) 999-99-99', :placeholder => '(123) 123-12-34' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">E-mail</label>
+    <div class="col-md-6">
+      <%= ff.email_field :bc_email, class: 'form-control' %>
+    </div>
+  </div>
+
+<% end %>
