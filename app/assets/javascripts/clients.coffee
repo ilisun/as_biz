@@ -29,6 +29,16 @@ $(document).on "page:update", ->
     $(".all-content").hide()
     $("#fieldset-"+type+"-content").show()
 
+  $("#bik_ent, #bik_ind").change (e) ->
+    bik = $("input[id='bik_ent']").val()
+    if !bik
+      bik = $("input[id='bik_ind']").val()
+    banks_path = "/clients/get_banks?bik=#{bik}"
+    if bik
+      $.ajax banks_path,
+        type: 'GET'
+        dataType: 'script'
+
 
 
 

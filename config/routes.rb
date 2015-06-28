@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :cities
 
   resources :countries
@@ -6,12 +7,13 @@ Rails.application.routes.draw do
   resources :banks do
     collection { post :import }
   end
+  get '/clients/get_banks', to: 'clients#get_banks', as: :get_banks
 
 
-  devise_for :users
   resources :clients
 
   root to: 'users#index'
+
 
 
 

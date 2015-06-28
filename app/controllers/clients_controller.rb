@@ -10,6 +10,11 @@ class ClientsController < ApplicationController
     @client.build_client_individual_entrep
   end
 
+  def get_banks
+    bik = params[:bik]
+    @banks = Bank.where(bik: bik)
+  end
+
   def edit
 
   end
