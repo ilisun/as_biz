@@ -15,6 +15,11 @@ class ClientsController < ApplicationController
     @banks = Bank.where(bik: bik)
   end
 
+  def get_cities
+    country = params[:country_id]
+    @cities = City.where(country_id: country)
+  end
+
   def edit
 
   end

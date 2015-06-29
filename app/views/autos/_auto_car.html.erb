@@ -1,0 +1,18 @@
+<%= f.fields_for :auto_car, :html => {id: 'dog_form'} do |ff| %>
+  <hr class="dotted tall">
+  <h4 class="mb-xlg">Автомобиль </h4>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Марка автомобиля</label>
+    <div class="col-md-6">
+      <%= ff.collection_select :mark, CarMark.all, :id_car_mark, :name, {:prompt => 'Выберите марку автомобиля...'}, {:class => 'form-control mb-md'} %>
+      <%= ff.select :model, [''], {:prompt => 'Выберите модель автомобиля...'}, {:class => 'form-control populate', disabled: true} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Фамилия <span class="required">*</span></label>
+    <div class="col-md-6">
+      <%#= ff.text_field :cp_last_name, class: 'form-control' %>
+    </div>
+  </div>
+
+<% end %>

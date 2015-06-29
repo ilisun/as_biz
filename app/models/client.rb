@@ -1,6 +1,7 @@
 class Client < ActiveRecord::Base
   belongs_to :country
   belongs_to :city
+  has_one :auto, dependent: :destroy
   has_one :client_entity, dependent: :destroy
   has_one :client_individual, dependent: :destroy
   has_one :client_individual_entrep, dependent: :destroy

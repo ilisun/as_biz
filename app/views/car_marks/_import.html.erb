@@ -1,0 +1,6 @@
+<h2>import_car_marks</h2>
+
+<%= form_tag import_car_marks_path, multipart: true do %>
+  <%= file_field_tag :file, accept: 'csv, xls, xlsx' %>
+  <%= submit_tag "Import" %>
+<% end %>

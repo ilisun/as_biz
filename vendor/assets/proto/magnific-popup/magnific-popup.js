@@ -297,7 +297,7 @@ MagnificPopup.prototype = {
 
 
 		if(!mfp.st.closeOnContentClick) {
-			_wrapClasses += ' mfp-auto-cursor';
+			_wrapClasses += ' mfp-set_auto-cursor';
 		}
 
 		if(_wrapClasses)

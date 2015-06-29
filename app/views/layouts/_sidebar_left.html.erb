@@ -27,10 +27,10 @@
             </a>
           </li>
           <li>
-            <a href="index.html">
-              <i class="fa fa-car" aria-hidden="true"></i>
+            <%= link_to autos_path do %>
+              <i class="fa fa-users" aria-hidden="true"></i>
               <span>Автомобили</span>
-            </a>
+            <% end %>
           </li>
           <li>
             <a href="index.html">
@@ -46,7 +46,12 @@
             <ul class="nav nav-children">
               <li>
                 <%= link_to banks_path do %>
-                  Банк БИК
+                  Справочник БИК
+                <% end %>
+              </li>
+              <li>
+                <%= link_to set_auto_settings_path do %>
+                  Справочник Авто
                 <% end %>
               </li>
             </ul>

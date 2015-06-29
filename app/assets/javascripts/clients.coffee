@@ -11,17 +11,6 @@
 #  return
 
 $(document).on "page:update", ->
-  cities = $('#client_city_id').html()
-  $('#client_country_id').change (e) ->
-    e.preventDefault()
-    country = $('#client_country_id :selected').text()
-    options = $(cities).filter("optgroup[label='#{country}']").html()
-    if options
-      $('#client_city_id').html(options)
-      $('#client_city_id').parent().show()
-    else
-      $('#client_city_id').empty()
-      $('#client_city_id').parent().hide()
 
   $("input[data-radio='radio-org']").click (e) ->
     type = $(this).data('type')
@@ -29,6 +18,7 @@ $(document).on "page:update", ->
     $(".all-content").hide()
     $("#fieldset-"+type+"-content").show()
 
+  # подставляем по БИК'у имя банка и корр счет
   $("#bik_ent, #bik_ind").change (e) ->
     bik = $("input[id='bik_ent']").val()
     if !bik
@@ -39,6 +29,27 @@ $(document).on "page:update", ->
         type: 'GET'
         dataType: 'script'
 
+  # подставляем города в селект зная country_id
+  $('#client_country_id').change (e) ->
+    e.preventDefault()
+    country_id = $('#client_country_id :selected').val()
+    city_path = "/clients/get_cities?country_id=#{country_id}"
+    if country_id
+      $.ajax city_path,
+        type: 'GET'
+        dataType: 'script'
 
 
 
+#  удаление в селекте ненужных элементов
+#  cities = $('#client_city_id').html()
+#  $('#client_country_id').change (e) ->
+#    e.preventDefault()
+#    country = $('#client_country_id :selected').text()
+#    options = $(cities).filter("optgroup[label='#{country}']").html()
+#    if options
+#      $('#client_city_id').html(options)
+#      $('#client_city_id').parent().show()
+#    else
+#      $('#client_city_id').empty()
+#      $('#client_city_id').parent().hide()

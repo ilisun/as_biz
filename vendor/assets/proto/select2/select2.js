@@ -1225,7 +1225,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
             if (this.opts.dropdownAutoWidth) {
                 resultsListNode = $('.select2-results', $dropdown)[0];
-                $dropdown.addClass('select2-drop-auto-width');
+                $dropdown.addClass('select2-drop-set_auto-width');
                 $dropdown.css('width', '');
                 // Add scrollbar width to dropdown if vertical scrollbar is present
                 dropWidth = $dropdown.outerWidth(false) + (resultsListNode.scrollHeight === resultsListNode.clientHeight ? 0 : scrollBarDimensions.width);
@@ -1233,7 +1233,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 enoughRoomOnRight = dropLeft + dropWidth <= viewPortRight;
             }
             else {
-                this.container.removeClass('select2-drop-auto-width');
+                this.container.removeClass('select2-drop-set_auto-width');
             }
 
             //console.log("below/ droptop:", dropTop, "dropHeight", dropHeight, "sum", (dropTop+dropHeight)+" viewport bottom", viewportBottom, "enough?", enoughRoomBelow);

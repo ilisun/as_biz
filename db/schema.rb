@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617152952) do
+ActiveRecord::Schema.define(version: 20150629181706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auto_cars", force: :cascade do |t|
+    t.integer  "auto_id"
+    t.string   "mark"
+    t.string   "model"
+    t.string   "generation"
+    t.string   "serie"
+    t.string   "modification"
+    t.date     "year"
+    t.string   "vin"
+    t.string   "gos_number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "autos", force: :cascade do |t|
     t.integer  "client_id"
@@ -33,6 +47,52 @@ ActiveRecord::Schema.define(version: 20150617152952) do
     t.string   "corr_account"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "car_generations", force: :cascade do |t|
+    t.integer  "id_car_generation"
+    t.string   "name"
+    t.integer  "id_car_model"
+    t.string   "year_begin"
+    t.string   "year_end"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "car_marks", force: :cascade do |t|
+    t.integer  "id_car_mark"
+    t.string   "name"
+    t.string   "name_rus"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "car_models", force: :cascade do |t|
+    t.integer  "id_car_model"
+    t.integer  "id_car_mark"
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "car_modifications", force: :cascade do |t|
+    t.integer  "id_car_modification"
+    t.integer  "id_car_serie"
+    t.integer  "id_car_model"
+    t.string   "name"
+    t.integer  "start_production_year"
+    t.integer  "end_production_year"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "car_series", force: :cascade do |t|
+    t.integer  "id_car_serie"
+    t.integer  "id_car_model"
+    t.string   "name"
+    t.integer  "id_car_generation"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "cities", force: :cascade do |t|

@@ -2740,7 +2740,7 @@ window.theme = {};
 		});
 	};
 
-	// auto initialize
+	// set_auto initialize
 	$(function() {
 		$('[data-theme-gmap-builder]').each(function() {
 			var $this = $( this );
