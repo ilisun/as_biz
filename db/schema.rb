@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20150629181706) do
 
   create_table "autos", force: :cascade do |t|
     t.integer  "client_id"
-    t.integer  "type"
+    t.integer  "type_auto"
     t.integer  "create_by",  null: false
     t.integer  "update_by",  null: false
     t.datetime "created_at", null: false

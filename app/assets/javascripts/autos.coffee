@@ -3,7 +3,27 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+
   $(document).on "page:change", ->
+
+    $('#datatable-auto').dataTable
+    processing: false
+    serverSide: true
+    ajax: $('#datatable-default').data('source')
+    pagingType: 'full_numbers'
+    oLanguage: {
+#      "sProcessing": "<img src='loading.gif'>"
+      "sInfo": "Показано c _START_ по _END_ из _TOTAL_ записей"
+      "sSearch": ""
+      "sLengthMenu": "\_MENU_"
+      "sEmptyTable": "Данных нет"
+      "oPaginate": {
+        "sFirst": "В начало"
+        "sPrevious": "<"
+        "sNext": ">"
+        "sLast": "В конец"
+      }
+    }
 
     $("input[data-radio='radio-org']").click (e) ->
       type = $(this).data('type')
@@ -58,10 +78,7 @@ $ ->
         e.charCode = newKey
       $('#vinId').val $('#vinId').val().toUpperCase()
 
-
-
-  $(document).on "page:update", ->
-
+    # работа в модальном окне
     $('#input_auto_select_client').bind 'keyup', (e) ->
       name = $('#input_auto_select_client').val()
       client_path = "/autos/get_clients?name=#{name}"
@@ -69,12 +86,12 @@ $ ->
         $.ajax client_path,
           type: 'GET'
           dataType: 'script'
-
     $('#area_auto_select_client').change (e) ->
       $('#input_auto_select_client').val $('#area_auto_select_client :selected').text()
-
     $('#autos_modal_ok').click (e) ->
       $('#auto_client_name').val $('#area_auto_select_client :selected').text()
       $('#auto_client_id').val $('#area_auto_select_client :selected').val()
       $('#select_client').modal('hide');
+    $('#auto_client_name').click (e) ->
+      $('#select_client').modal('show');
 

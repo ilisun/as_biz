@@ -1,7 +1,10 @@
 class AutosController < ApplicationController
 
   def index
-    @autos = Auto.all
+    respond_to do |format|
+      format.html
+      format.json { render json: AutoDatatable.new(view_context) }
+    end
   end
 
   def new
@@ -35,10 +38,6 @@ class AutosController < ApplicationController
     @clients = Client.where(clients[:name].matches("%#{name.to_s}%"))
   end
 
-  def select_client
-    @clients = Client.all
-  end
-
   def create
     params[:auto][:create_by] = current_user.id
     params[:auto][:update_by] = current_user.id
@@ -67,8 +66,8 @@ class AutosController < ApplicationController
 
   private
 
-  def client_params
-    params.require(:auto).permit(:client_id, :type, :create_by, :update_by,
+  def auto_params
+    params.require(:auto).permit(:client_id, :type_auto, :create_by, :update_by,
                                  :auto_car_attributes => [:mark, :model, :generation, :serie, :modification,
                                                           :year, :vin, :gos_number, :_destroy])
   end
