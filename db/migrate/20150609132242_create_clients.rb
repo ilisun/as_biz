@@ -3,6 +3,7 @@ class CreateClients < ActiveRecord::Migration
     create_table :clients do |t|
       t.integer   :category
       t.integer   :type_structure
+      t.string    :name
       t.integer   :country_id
       t.integer   :city_id
       t.string    :service

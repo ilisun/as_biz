@@ -1,0 +1,4 @@
+<option>Выберите модель автомобиля...</option>
+<% @models.each do |c| %>
+  <option value="<%= c.id_car_model %>"><%= c.name %></option>
+<% end %>

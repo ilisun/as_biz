@@ -4,11 +4,11 @@
   <div class="col-md-12">
     <section class="panel">
       <div class="panel-body">
-        <table class="table table-bordered table-striped mb-none" id="datatable-details">
+        <table class="table table-bordered table-striped mb-none", id="datatable-default", data-source="<%= clients_path(format: :json) %>">
           <thead>
             <tr>
               <th>№</th>
-              <th>ФИО клиента</th>
+              <th>ФИО клиента / Название компании</th>
               <th>Тип</th>
               <th>Категория</th>
               <th>Город</th>
@@ -16,37 +16,6 @@
             </tr>
           </thead>
           <tbody>
-            <% @client.each do |client| %>
-              <tr>
-                <td><%= client.id %></td>
-                <% if client.type_structure == 0 %>
-                  <td><%= link_to "#{client.client_entity.cp_last_name} #{client.client_entity.cp_first_name} #{client.client_entity.cp_middle_name}", client_path(client) %></td>
-                  <td>Организация</td>
-                <% elsif client.type_structure == 1 %>
-                  <td><%= link_to "#{client.client_individual_entrep.cp_last_name} #{client.client_individual_entrep.cp_first_name} #{client.client_individual_entrep.cp_middle_name}", client_path(client) %></td>
-                  <td>ИП</td>
-                <% elsif client.type_structure == 2 %>
-                  <td><%= link_to "#{client.client_individual.last_name} #{client.client_individual.first_name} #{client.client_individual.middle_name}", client_path(client) %></td>
-                  <td>Физическое лицо</td>
-                <% end %>
-                <% if client.category = '0' %>
-                  <td>Опт</td>
-                <% else %>
-                  <td>Розница</td>
-                <% end %>
-                <% if !client.city_id.nil? %>
-                  <td><%= client.city.name %></td>
-                <% end %>
-                <td class="actions">
-                  <%= link_to edit_client_path(client) do %>
-                    <i class="fa fa-pencil"></i>
-                  <% end %>
-                  <%= link_to client_path(client), method: :delete, data: { confirm: 'Вы уверены что хотите удалить?' } do %>
-                    <i class="fa fa-trash-o"></i>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
           </tbody>
         </table>
       </div>

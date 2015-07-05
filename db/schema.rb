@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(version: 20150629181706) do
   create_table "clients", force: :cascade do |t|
     t.integer  "category"
     t.integer  "type_structure"
+    t.string   "name"
     t.integer  "country_id"
     t.integer  "city_id"
     t.string   "service"

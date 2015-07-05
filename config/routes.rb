@@ -1,14 +1,26 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  get '/clients/get_banks', to: 'clients#get_banks', as: :get_banks
+  get '/clients/get_cities', to: 'clients#get_cities', as: :get_cities
+  get '/autos/get_models', to: 'autos#get_models', as: :get_models
+  get '/autos/get_generations', to: 'autos#get_generations', as: :get_generations
+  get '/autos/get_series', to: 'autos#get_series', as: :get_series
+  get '/autos/get_modifications', to: 'autos#get_modifications', as: :get_modifications
+  get '/autos/get_clients', to: 'autos#get_clients', as: :get_clients
+
   resources :cities
   resources :countries
-  resources :autos
   resources :clients
 
+  resources :autos do
+    member do
+      get :select_client, action: :select_client, :as => :select_client
+    end
+  end
   resources :settings do
     collection { get :set_auto }
   end
-
   resources :car_series do
     collection { post :import }
   end
@@ -24,13 +36,9 @@ Rails.application.routes.draw do
   resources :car_generations do
     collection { post :import }
   end
-
   resources :banks do
     collection { post :import }
   end
-
-  get '/clients/get_banks', to: 'clients#get_banks', as: :get_banks
-  get '/clients/get_cities', to: 'clients#get_cities', as: :get_cities
 
   root to: 'users#index'
 end

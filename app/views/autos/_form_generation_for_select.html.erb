@@ -1,0 +1,4 @@
+<option>Выберите поколение автомобиля...</option>
+<% @generations.each do |c| %>
+  <option value="<%= c.id_car_generation %>"><%= "#{c.name} #{c.year_begin} - #{c.year_end}" %></option>
+<% end %>

@@ -108,6 +108,9 @@ Country.create([
                    { name: "Япония" }
                ])
 
+p "Страны загрузил"
+
+
 City.create([
                 { name: "А-ен-Провенс", country_id: 93 },
                 { name: "Аарау", country_id: 97 },
@@ -5709,7 +5712,12 @@ City.create([
                 { name: "Мендоза", country_id: 6 },
                 { name: "Мендота", country_id: 74 },
                 { name: "Мендота-Хейгтс", country_id: 74 },
-                { name: "Мендхам", country_id: 74 },
+                { name: "Мендхам", country_id: 74 }
+            ])
+
+p "Загрузил половину городов"
+
+City.create([
                 { name: "Мензелинск", country_id: 1 },
                 { name: "Менкеря", country_id: 1 },
                 { name: "Менло-Парк", country_id: 74 },
@@ -8655,7 +8663,12 @@ City.create([
                 { name: "Таунтон", country_id: 74 },
                 { name: "Таупо", country_id: 64 },
                 { name: "Таураге", country_id: 52 },
-                { name: "Тауранга", country_id: 64 },
+                { name: "Тауранга", country_id: 64 }
+            ])
+
+p "Ещё чуть-чуть"
+
+City.create([
                 { name: "Таусон", country_id: 74 },
                 { name: "Тафт", country_id: 74 },
                 { name: "Тахиаташ", country_id: 90 },

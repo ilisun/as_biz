@@ -2,16 +2,61 @@
   <hr class="dotted tall">
   <h4 class="mb-xlg">Автомобиль </h4>
   <div class="form-group">
-    <label class="col-md-3 control-label" for="inputSuccess">Марка автомобиля</label>
+    <label class="col-md-3 control-label" for="inputSuccess">Марка автомобиля <span class="required">*</span></label>
     <div class="col-md-6">
       <%= ff.collection_select :mark, CarMark.all, :id_car_mark, :name, {:prompt => 'Выберите марку автомобиля...'}, {:class => 'form-control mb-md'} %>
-      <%= ff.select :model, [''], {:prompt => 'Выберите модель автомобиля...'}, {:class => 'form-control populate', disabled: true} %>
+      <div class="col-sm-5">
+        <div class="form-group">
+          <%= ff.select :model, [''], {:include_blank => true}, {:class => 'form-control populate', disabled: true} %>
+        </div>
+      </div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-5">
+        <div class="form-group">
+          <%= ff.select :generation, [''], {:include_blank => true}, {:class => 'form-control populate', disabled: true} %>
+        </div>
+      </div>
+      <div class="col-sm-5" style="padding-top: 17px">
+        <div class="form-group">
+          <%= ff.select :serie, [''], {:include_blank => true}, {:class => 'form-control populate', disabled: true} %>
+        </div>
+      </div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-5" style="padding-top: 17px">
+        <div class="form-group">
+          <%= ff.select :modification, [''], {:include_blank => true}, {:class => 'form-control populate', disabled: true} %>
+        </div>
+      </div>
     </div>
   </div>
   <div class="form-group">
-    <label class="col-md-3 control-label" for="inputSuccess">Фамилия <span class="required">*</span></label>
+    <label class="col-md-3 control-label" for="inputSuccess">Год <span class="required">*</span></label>
     <div class="col-md-6">
-      <%#= ff.text_field :cp_last_name, class: 'form-control' %>
+      <div class="col-sm-5">
+        <div class="form-group">
+          <%= ff.select :year, (Time.zone.now.year - 50)..(Time.zone.now.year), {:include_blank => true}, {:class => 'form-control populate'} %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">VIN <span class="required">*</span></label>
+    <div class="col-md-6">
+      <div class="col-sm-5">
+        <div class="form-group">
+          <%= ff.text_field :vin, class: 'form-control', id: 'vinId' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="inputSuccess">Гос. номер <span class="required">*</span></label>
+    <div class="col-md-6">
+      <div class="col-sm-5">
+        <div class="form-group">
+          <%= ff.text_field :gos_number, class: 'form-control' %>
+        </div>
+      </div>
     </div>
   </div>
 

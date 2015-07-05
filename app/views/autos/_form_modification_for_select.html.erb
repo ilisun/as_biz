@@ -1,0 +1,4 @@
+<option>Выберите модификацию автомобиля...</option>
+<% @modifications.each do |c| %>
+  <option value="<%= c.id_car_modification %>"><%= "#{c.name} #{c.start_production_year} - #{c.end_production_year}" %></option>
+<% end %>

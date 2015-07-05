@@ -1,6 +1,9 @@
 class ClientsController < ApplicationController
   def index
-    @client = Client.all
+    respond_to do |format|
+      format.html
+      format.json { render json: ClientDatatable.new(view_context) }
+    end
   end
 
   def new
@@ -54,7 +57,7 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:category, :type_structure, :country_id, :city_id, :service, :attraction, :comment, :create_by, :update_by,
+    params.require(:client).permit(:category, :type_structure, :name, :country_id, :city_id, :service, :attraction, :comment, :create_by, :update_by,
                                    :client_entity_attributes => [:cp_position, :cp_last_name, :cp_first_name, :cp_middle_name,
                                                                  :cp_gender, :cp_birthday, :cp_phone, :cp_alt_phone, :cp_fax,
                                                                  :cp_email, :li_company_name, :li_inn, :li_kpp, :li_ogrn, :li_nds,

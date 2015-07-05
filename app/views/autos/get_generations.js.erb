@@ -1,0 +1,3 @@
+$('#auto_auto_car_attributes_serie').empty().prop('disabled', true);
+$('#auto_auto_car_attributes_modification').empty().prop('disabled', true);
+$('#auto_auto_car_attributes_generation').empty().append('<%= j render 'autos/form_generation_for_select' %>').removeAttr('disabled');

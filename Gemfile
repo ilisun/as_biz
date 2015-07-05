@@ -14,13 +14,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'roo'
 gem 'roo-xls'
-gem 'jquery-datatables-rails'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git', branch: 'master'
+gem 'ajax-datatables-rails', '0.2.1'
+gem 'kaminari'
+
 gem 'font-awesome-rails'
 
 gem 'dotenv'
 gem 'dotenv-deployment', require: 'dotenv/deployment'
 gem 'therubyracer'
-
 
 group :development do
   gem 'capistrano', require: false
