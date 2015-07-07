@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <%= form_for @auto, :html => {class: 'form-horizontal'} do |f| %>
+    <%= form_for @order, :html => {class: 'form-horizontal'} do |f| %>
       <section class="panel">
         <header class="panel-heading">
           <h2 class="panel-title">Новое транспортное средство</h2>
@@ -14,37 +14,37 @@
               <label class="col-md-3 control-label" for="inputSuccess">Клиент <span class="required">*</span></label>
               <div class="col-md-6">
                 <%= f.hidden_field :client_id %>
-                <input type="text" class="form-control" id="auto_client_name">
+                <input type="text" class="form-control" id="order_client_name">
               </div>
             </div>
+            <div class="form-group">
+              <%= f.label 'Номер заказа', class: 'col-md-3 control-label' %>
+              <div class="col-md-6">
+                <%= f.text_field :number, :readonly => true, class: 'form-control' %>
+              </div>
+            </div>
+          </fieldset></br>
+
+          <fieldset id="products">
+            <%= f.fields_for :products do |ff| %>
+              <%= render 'product_fields', :f => ff %>
+            <% end %>
 
             <div class="form-group">
-              <label class="col-sm-3 control-label">Тип транспортного средства <span class="required">*</span></label>
-              <div class="col-sm-9">
-                <div class="radio-custom radio-primary">
-                  <%= f.radio_button :type_auto, '0', 'data-radio' => 'radio-org', 'data-type' => 'one' %>
-                  <%= f.label :type_auto, 'Автомобиль', :value => '0' %>
-                </div>
-                <div class="radio-custom radio-primary">
-                  <%= f.radio_button :type_auto, '1', 'data-radio' => 'radio-org', 'data-type' => 'two' %>
-                  <%= f.label :type_auto, 'Мотоцикл', :value => '1' %>
-                </div>
+              <%= link_to_add_association f, :products do %>
+              <div class="col-md-3 control-label"></div>
+              <div class="col-md-6">
+                  <button type="button" class="mb-xs mt-xs mr-xs btn btn-success"><i class="fa fa-wrench" style="font-size: 18px;"></i> Добавить запчасть</button>
               </div>
-
+              <% end %>
             </div>
-
           </fieldset>
-
-          <fieldset class="all-content" id="fieldset-one-content">
-            <%= render 'auto_car', :f => f %>
-          </fieldset>
-
         </div>
         <footer class="panel-footer">
           <div class="row">
             <div class="col-sm-9 col-sm-offset-3">
               <%= f.submit "Сохранить", class: 'btn btn-primary' %>
-              <%= link_to 'Назад', orders_path, class: "btn btn-default" %>
+              <%= link_to 'Назад', autos_path, class: "btn btn-default" %>
             </div>
           </div>
         </footer>

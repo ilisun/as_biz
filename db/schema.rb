@@ -229,8 +229,6 @@ ActiveRecord::Schema.define(version: 20150629181706) do
     t.decimal  "total_sell_price"
     t.string   "location"
     t.decimal  "customer_paid"
-    t.integer  "create_by",         null: false
-    t.integer  "update_by",         null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end

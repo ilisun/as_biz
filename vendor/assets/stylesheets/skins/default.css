@@ -224,6 +224,9 @@ body .btn-dark[disabled] {
 .highlight {
 	background-color: #0088cc;
 }
+.highlight.green{
+	background-color: #47a447;
+}
 /* Drop Caps */
 p.drop-caps.colored:first-child:first-letter {
 	color: #0088cc;

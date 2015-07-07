@@ -15,8 +15,6 @@ class CreateProducts < ActiveRecord::Migration
       t.string  :location
       t.decimal :customer_paid
 
-      t.integer :create_by, null: false
-      t.integer :update_by, null: false
       t.timestamps        null: false
     end
   end

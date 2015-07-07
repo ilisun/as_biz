@@ -3,17 +3,19 @@ Rails.application.routes.draw do
 
   get '/clients/get_banks', to: 'clients#get_banks', as: :get_banks
   get '/clients/get_cities', to: 'clients#get_cities', as: :get_cities
+  get '/clients/get_clients', to: 'clients#get_clients', as: :get_clients
   get '/autos/get_models', to: 'autos#get_models', as: :get_models
   get '/autos/get_generations', to: 'autos#get_generations', as: :get_generations
   get '/autos/get_series', to: 'autos#get_series', as: :get_series
   get '/autos/get_modifications', to: 'autos#get_modifications', as: :get_modifications
-  get '/autos/get_clients', to: 'autos#get_clients', as: :get_clients
 
   resources :cities
   resources :countries
-  resources :clients
+  resources :autos
+  resources :orders
+  resources :products
 
-  resources :autos do
+  resources :clients do
     member do
       get :select_client, action: :select_client, :as => :select_client
     end

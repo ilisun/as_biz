@@ -1,12 +1,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require cocoon
 
 //= require modernizr/modernizr
 //= require jquery-browser-mobile/jquery.browser.mobile
 //= require nanoscroller/nanoscroller
 //= require bootstrap-datepicker/js/bootstrap-datepicker
 //= require magnific-popup/magnific-popup
+//= require fuelux/js/spinner
 //= require jquery-placeholder/jquery.placeholder
 //= require jquery-maskedinput/jquery.maskedinput
 //= require select2/select2

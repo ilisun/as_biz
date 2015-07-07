@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+
   def index
     respond_to do |format|
       format.html
@@ -21,6 +22,12 @@ class ClientsController < ApplicationController
   def get_cities
     country = params[:country_id]
     @cities = City.where(country_id: country)
+  end
+
+  def get_clients
+    name = params[:name]
+    clients = Client.arel_table
+    @clients = Client.where(clients[:name].matches("%#{name.to_s}%"))
   end
 
   def edit

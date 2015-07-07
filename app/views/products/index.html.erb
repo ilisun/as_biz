@@ -1,0 +1,25 @@
+<%= render 'page_header' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <section class="panel">
+      <div class="panel-body">
+        <table class="table table-bordered table-striped mb-none", id="datatable-product", data-source="<%= products_path(format: :json) %>">
+          <thead>
+          <tr>
+            <th>№</th>
+            <th>Артикул</th>
+            <th>Производитель</th>
+            <th>Наименование</th>
+            <th>Описание</th>
+            <th>Состояние</th>
+            <th>Нахождение</th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>

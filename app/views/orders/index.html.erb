@@ -1,0 +1,24 @@
+<%= render 'page_header' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <section class="panel">
+      <div class="panel-body">
+        <table class="table table-bordered table-striped mb-none", id="datatable-order", data-source="<%= orders_path(format: :json) %>">
+          <thead>
+          <tr>
+            <th>№</th>
+            <th>Номер заказа</th>
+            <th>ФИО клиента / Название компании</th>
+            <th>Кол-во деталей</th>
+            <th>Дата</th>
+            <th>Действие</th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>

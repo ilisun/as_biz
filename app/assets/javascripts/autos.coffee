@@ -3,13 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-
-  $(document).on "page:change", ->
-
-    $('#datatable-auto').dataTable
+  $('#datatable-auto').dataTable
     processing: false
     serverSide: true
-    ajax: $('#datatable-default').data('source')
+    ajax: $('#datatable-auto').data('source')
     pagingType: 'full_numbers'
     oLanguage: {
 #      "sProcessing": "<img src='loading.gif'>"
@@ -24,6 +21,10 @@ $ ->
         "sLast": "В конец"
       }
     }
+
+  $(document).on "page:change", ->
+
+
 
     $("input[data-radio='radio-org']").click (e) ->
       type = $(this).data('type')
@@ -79,19 +80,25 @@ $ ->
       $('#vinId').val $('#vinId').val().toUpperCase()
 
     # работа в модальном окне
-    $('#input_auto_select_client').bind 'keyup', (e) ->
-      name = $('#input_auto_select_client').val()
-      client_path = "/autos/get_clients?name=#{name}"
+    $('#auto_client_name').click (e) ->
+      $('#select_client').modal('show');
+    $('#input_select_client').bind 'keyup', (e) ->
+      name = $('#input_select_client').val()
+      client_path = "/clients/get_clients?name=#{name}"
       if name
         $.ajax client_path,
           type: 'GET'
           dataType: 'script'
-    $('#area_auto_select_client').change (e) ->
-      $('#input_auto_select_client').val $('#area_auto_select_client :selected').text()
+    $('#area_select_client').change (e) ->
+      $('#input_select_client').val $('#area_select_client :selected').text()
+    # ??? нужно объединить два ожидания ниже
     $('#autos_modal_ok').click (e) ->
-      $('#auto_client_name').val $('#area_auto_select_client :selected').text()
-      $('#auto_client_id').val $('#area_auto_select_client :selected').val()
+      $('#auto_client_name').val $('#area_select_client :selected').text()
+      $('#auto_client_id').val $('#area_select_client :selected').val()
       $('#select_client').modal('hide');
-    $('#auto_client_name').click (e) ->
-      $('#select_client').modal('show');
+    $('#area_select_client').dblclick (e) ->
+      $('#auto_client_name').val $('#area_select_client :selected').text()
+      $('#auto_client_id').val $('#area_select_client :selected').val()
+      $('#select_client').modal('hide');
+
 

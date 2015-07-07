@@ -1,0 +1,91 @@
+<div class="nested-fields form-group">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <section class="panel panel-featured panel-featured-success">
+      <header class="panel-heading">
+        <div class="panel-actions">
+          <%= link_to_remove_association f do %>
+            <i class="fa fa-times" style="font-size: 26px;" aria-hidden="true"></i>
+          <% end %>
+        </div>
+
+        <h2 class="panel-title">Запчасть</h2>
+      </header>
+      <div class="panel-body">
+
+        <div class="row form-group">
+          <div class="col-lg-3">
+            <%= f.text_field :article, class: 'form-control', placeholder: 'Артикул' %>
+          </div>
+
+          <div class="mb-md hidden-lg hidden-xl"></div>
+
+          <div class="col-lg-3">
+            <%= f.text_field :manufacturer, class: 'form-control', placeholder: 'Производитель' %>
+          </div>
+
+          <div class="mb-md hidden-lg hidden-xl"></div>
+
+          <div class="col-lg-3">
+            <%= f.text_field :name, class: 'form-control', placeholder: 'Наименование' %>
+          </div>
+
+          <div class="mb-md hidden-lg hidden-xl"></div>
+
+          <div class="col-lg-3">
+            <%= f.text_field :description, class: 'form-control', placeholder: 'Описание' %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-lg-3">
+            <%= f.select :condition, [['новая'], ['б/у']], {:prompt => 'Состояние...'}, {:class => 'form-control mb-md'} %>
+          </div>
+
+          <div class="mb-md hidden-lg hidden-xl"></div>
+
+          <div class="col-lg-3">
+            <%= f.text_field :purchase_price, class: 'form-control', placeholder: 'Цена закуп.' %>
+          </div>
+
+          <div class="mb-md hidden-lg hidden-xl"></div>
+
+          <div class="col-lg-3">
+            <%= f.text_field :selling_price, class: 'form-control', placeholder: 'Цена прод.' %>
+          </div>
+
+          <div class="mb-md hidden-lg hidden-xl"></div>
+
+          <div class="col-lg-3">
+            <%= f.text_field :amount, class: 'form-control', placeholder: 'Кол-во, шт.' %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-lg-3">
+            <%= f.text_field :total_purch_price, class: 'form-control', placeholder: 'Итог закуп.' %>
+          </div>
+
+          <div class="mb-md hidden-lg hidden-xl"></div>
+
+          <div class="col-lg-3">
+            <%= f.text_field :total_sell_price, class: 'form-control', placeholder: 'Итог прод.' %>
+          </div>
+
+          <div class="mb-md hidden-lg hidden-xl"></div>
+
+          <div class="col-lg-3">
+            <%= f.select :location, [['в пути'], ['у нас'], ['передано клиенту']], {:prompt => 'Нахождение...'}, {:class => 'form-control mb-md'} %>
+          </div>
+
+          <div class="mb-md hidden-lg hidden-xl"></div>
+
+          <div class="col-lg-3">
+            <%= f.text_field :customer_paid, class: 'form-control', placeholder: 'Оплачено клиентом' %>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</div>
