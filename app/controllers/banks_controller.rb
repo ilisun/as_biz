@@ -2,7 +2,6 @@ class BanksController < ApplicationController
 
   def index
     @banks = Bank.all
-
   end
 
   def import

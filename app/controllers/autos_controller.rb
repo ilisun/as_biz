@@ -12,6 +12,10 @@ class AutosController < ApplicationController
     @auto.build_auto_car
   end
 
+  def edit
+    @auto = Auto.find(params[:id])
+  end
+
   def get_models
     mark = params[:id_car_mark]
     @models = CarModel.where(id_car_mark: mark)
@@ -68,8 +72,8 @@ class AutosController < ApplicationController
 
   def auto_params
     params.require(:auto).permit(:client_id, :type_auto, :create_by, :update_by,
-                                 :auto_car_attributes => [:mark, :model, :generation, :serie, :modification,
-                                                          :year, :vin, :gos_number, :_destroy])
+                                 :auto_car_attributes => [:car_mark_id, :car_model_id, :car_generation_id, :car_serie_id,
+                                                          :car_modification_id, :year, :vin, :gos_number, :_destroy])
   end
 
 end

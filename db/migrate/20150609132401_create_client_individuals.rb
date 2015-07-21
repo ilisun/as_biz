@@ -3,17 +3,17 @@ class CreateClientIndividuals < ActiveRecord::Migration
     create_table :client_individuals do |t|
       t.integer :client_id
 
-      t.string  :last_name
-      t.string  :first_name
-      t.string  :middle_name
+      t.string  :last_name,           limit: 32,    null: false,  default: ""
+      t.string  :first_name,          limit: 32,    null: false,  default: ""
+      t.string  :middle_name,         limit: 32,    null: false,  default: ""
       t.string  :gender
       t.date    :birthday
-      t.string  :phone
-      t.string  :alt_phone
-      t.string  :fax
-      t.string  :email
+      t.string  :phone,               limit: 32,    null: false,  default: ""
+      t.string  :alt_phone,           limit: 32
+      t.string  :fax,                 limit: 32
+      t.string  :email,               limit: 32
 
-      t.timestamps          null: false
+      t.timestamps                    null: false
     end
   end
 end

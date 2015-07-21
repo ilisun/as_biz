@@ -1,0 +1,9 @@
+<%= render 'banks/page_header' %>
+
+<h2>Import Products</h2>
+
+<%= form_tag import_banks_path, multipart: true do %>
+  <%= file_field_tag :file, accept: 'csv, xls, xlsx' %>
+  <%= submit_tag "Import" %>
+<% end %>
+

@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629181706) do
+ActiveRecord::Schema.define(version: 20150716093615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "auto_cars", force: :cascade do |t|
     t.integer  "auto_id"
-    t.string   "mark"
-    t.string   "model"
-    t.string   "generation"
-    t.string   "serie"
-    t.string   "modification"
+    t.integer  "car_mark_id"
+    t.integer  "car_model_id"
+    t.integer  "car_generation_id"
+    t.integer  "car_serie_id"
+    t.integer  "car_modification_id"
     t.date     "year"
-    t.string   "vin"
-    t.string   "gos_number"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "vin",                 limit: 32, default: "", null: false
+    t.string   "gos_number",          limit: 16, default: "", null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   create_table "autos", force: :cascade do |t|
@@ -40,175 +40,197 @@ ActiveRecord::Schema.define(version: 20150629181706) do
   end
 
   create_table "banks", force: :cascade do |t|
-    t.string   "full_name"
-    t.string   "name"
-    t.string   "city"
-    t.string   "bik"
-    t.string   "corr_account"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "full_name",    limit: 128, default: "", null: false
+    t.string   "name",         limit: 96,  default: "", null: false
+    t.string   "city",         limit: 32,  default: "", null: false
+    t.string   "bik",          limit: 16,  default: "", null: false
+    t.string   "corr_account", limit: 32,  default: "", null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "car_generations", force: :cascade do |t|
     t.integer  "id_car_generation"
-    t.string   "name"
+    t.string   "name",              limit: 64, default: "", null: false
     t.integer  "id_car_model"
     t.string   "year_begin"
     t.string   "year_end"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "car_marks", force: :cascade do |t|
     t.integer  "id_car_mark"
-    t.string   "name"
-    t.string   "name_rus"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name",        limit: 32, default: "", null: false
+    t.string   "name_rus",    limit: 32, default: "", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "car_models", force: :cascade do |t|
     t.integer  "id_car_model"
     t.integer  "id_car_mark"
-    t.string   "name"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "name",         limit: 64, default: "", null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "car_modifications", force: :cascade do |t|
     t.integer  "id_car_modification"
     t.integer  "id_car_serie"
     t.integer  "id_car_model"
-    t.string   "name"
+    t.string   "name",                  limit: 64, default: "", null: false
     t.integer  "start_production_year"
     t.integer  "end_production_year"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
   end
 
   create_table "car_series", force: :cascade do |t|
     t.integer  "id_car_serie"
     t.integer  "id_car_model"
-    t.string   "name"
+    t.string   "name",              limit: 64, default: "", null: false
     t.integer  "id_car_generation"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "cities", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 32, default: "", null: false
     t.integer  "country_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "client_entities", force: :cascade do |t|
-    t.integer  "client_id"
-    t.string   "cp_position"
-    t.string   "cp_last_name"
-    t.string   "cp_first_name"
-    t.string   "cp_middle_name"
+    t.integer  "client_id",                                    null: false
+    t.string   "cp_position",         limit: 64
+    t.string   "cp_last_name",        limit: 32,  default: "", null: false
+    t.string   "cp_first_name",       limit: 32,  default: "", null: false
+    t.string   "cp_middle_name",      limit: 32,  default: "", null: false
     t.string   "cp_gender"
     t.date     "cp_birthday"
-    t.string   "cp_phone"
-    t.string   "cp_alt_phone"
-    t.string   "cp_fax"
-    t.string   "cp_email"
-    t.string   "li_company_name"
-    t.string   "li_inn"
-    t.string   "li_kpp"
-    t.string   "li_ogrn"
+    t.string   "cp_phone",            limit: 32,  default: "", null: false
+    t.string   "cp_alt_phone",        limit: 32
+    t.string   "cp_fax",              limit: 32
+    t.string   "cp_email",            limit: 32
+    t.string   "li_company_name",     limit: 128, default: "", null: false
+    t.string   "li_inn",              limit: 16
+    t.string   "li_kpp",              limit: 16
+    t.string   "li_ogrn",             limit: 16
     t.boolean  "li_nds"
     t.text     "li_legal_address"
     t.text     "li_actual_address"
-    t.string   "bd_checking_account"
-    t.string   "bd_bank_bik"
-    t.string   "dc_position"
-    t.string   "dc_last_name"
-    t.string   "dc_first_name"
-    t.string   "dc_middle_name"
-    t.string   "bc_position"
-    t.string   "bc_last_name"
-    t.string   "bc_first_name"
-    t.string   "bc_middle_name"
-    t.string   "bc_phone"
-    t.string   "bc_email"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.string   "bd_checking_account", limit: 32
+    t.string   "bd_bank_bik",         limit: 32
+    t.string   "dc_position",         limit: 64
+    t.string   "dc_last_name",        limit: 32
+    t.string   "dc_first_name",       limit: 32
+    t.string   "dc_middle_name",      limit: 32
+    t.string   "bc_position",         limit: 64
+    t.string   "bc_last_name",        limit: 32
+    t.string   "bc_first_name",       limit: 32
+    t.string   "bc_middle_name",      limit: 32
+    t.string   "bc_phone",            limit: 32
+    t.string   "bc_email",            limit: 32
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
   create_table "client_individual_entreps", force: :cascade do |t|
     t.integer  "client_id"
-    t.string   "cp_position"
-    t.string   "cp_last_name"
-    t.string   "cp_first_name"
-    t.string   "cp_middle_name"
+    t.string   "cp_position",         limit: 64
+    t.string   "cp_last_name",        limit: 32,  default: "", null: false
+    t.string   "cp_first_name",       limit: 32,  default: "", null: false
+    t.string   "cp_middle_name",      limit: 32,  default: "", null: false
     t.string   "cp_gender"
     t.date     "cp_birthday"
-    t.string   "cp_phone"
-    t.string   "cp_alt_phone"
-    t.string   "cp_fax"
-    t.string   "cp_email"
-    t.string   "li_company_name"
-    t.string   "li_inn"
-    t.string   "li_ogrn"
+    t.string   "cp_phone",            limit: 32,  default: "", null: false
+    t.string   "cp_alt_phone",        limit: 32
+    t.string   "cp_fax",              limit: 32
+    t.string   "cp_email",            limit: 32
+    t.string   "li_company_name",     limit: 128, default: "", null: false
+    t.string   "li_inn",              limit: 16
+    t.string   "li_ogrn",             limit: 16
     t.boolean  "li_nds"
     t.text     "li_legal_address"
     t.text     "li_actual_address"
-    t.string   "bd_checking_account"
-    t.string   "bd_bank_bik"
-    t.string   "dc_last_name"
-    t.string   "dc_first_name"
-    t.string   "dc_middle_name"
-    t.string   "bc_position"
-    t.string   "bc_last_name"
-    t.string   "bc_first_name"
-    t.string   "bc_middle_name"
-    t.string   "bc_phone"
-    t.string   "bc_email"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.string   "bd_checking_account", limit: 32
+    t.string   "bd_bank_bik",         limit: 32
+    t.string   "bc_position",         limit: 64
+    t.string   "bc_last_name",        limit: 32
+    t.string   "bc_first_name",       limit: 32
+    t.string   "bc_middle_name",      limit: 32
+    t.string   "bc_phone",            limit: 32
+    t.string   "bc_email",            limit: 32
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
   create_table "client_individuals", force: :cascade do |t|
     t.integer  "client_id"
-    t.string   "last_name"
-    t.string   "first_name"
-    t.string   "middle_name"
+    t.string   "last_name",   limit: 32, default: "", null: false
+    t.string   "first_name",  limit: 32, default: "", null: false
+    t.string   "middle_name", limit: 32, default: "", null: false
     t.string   "gender"
     t.date     "birthday"
-    t.string   "phone"
-    t.string   "alt_phone"
-    t.string   "fax"
-    t.string   "email"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "phone",       limit: 32, default: "", null: false
+    t.string   "alt_phone",   limit: 32
+    t.string   "fax",         limit: 32
+    t.string   "email",       limit: 32
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "clients", force: :cascade do |t|
-    t.integer  "category"
-    t.integer  "type_structure"
-    t.string   "name"
-    t.integer  "country_id"
-    t.integer  "city_id"
+    t.integer  "category",                  default: 0,   null: false
+    t.integer  "type_structure",            default: 0,   null: false
+    t.string   "name",           limit: 96, default: "",  null: false
+    t.integer  "country_id",                default: 1,   null: false
+    t.integer  "city_id",                   default: 450, null: false
     t.string   "service"
     t.string   "attraction"
     t.text     "comment"
-    t.integer  "create_by",      null: false
-    t.integer  "update_by",      null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "create_by",                               null: false
+    t.integer  "update_by",                               null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   create_table "countries", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "id_country"
+    t.string   "name",       limit: 32, default: "", null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  create_table "deliveries", force: :cascade do |t|
+    t.string   "number"
+    t.string   "doc_number", limit: 32,                         default: "", null: false
+    t.date     "doc_date"
+    t.decimal  "total_pay",             precision: 8, scale: 2
+    t.date     "take_at"
+    t.string   "status"
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
+  end
+
+  create_table "delivery_products", force: :cascade do |t|
+    t.string   "delivery_id"
+    t.string   "article",      limit: 32,                         default: "", null: false
+    t.string   "name",         limit: 64,                         default: "", null: false
+    t.string   "manufacturer", limit: 32,                         default: "", null: false
+    t.integer  "amount"
+    t.decimal  "total_price",             precision: 8, scale: 2
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer  "client_id"
+    t.integer  "auto_id"
     t.string   "number"
+    t.string   "status"
     t.integer  "create_by",  null: false
     t.integer  "update_by",  null: false
     t.datetime "created_at", null: false
@@ -217,20 +239,22 @@ ActiveRecord::Schema.define(version: 20150629181706) do
 
   create_table "products", force: :cascade do |t|
     t.integer  "order_id"
-    t.string   "article"
-    t.string   "manufacturer"
-    t.string   "name"
-    t.string   "description"
+    t.integer  "delivery_id"
+    t.string   "article",           limit: 32,                          default: "", null: false
+    t.string   "manufacturer",      limit: 32
+    t.string   "name",              limit: 32
+    t.string   "description",       limit: 128
     t.string   "condition"
-    t.decimal  "purchase_price"
-    t.decimal  "selling_price"
+    t.decimal  "purchase_price",                precision: 8, scale: 2
+    t.decimal  "selling_price",                 precision: 8, scale: 2
     t.integer  "amount"
-    t.decimal  "total_purch_price"
-    t.decimal  "total_sell_price"
-    t.string   "location"
-    t.decimal  "customer_paid"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.decimal  "total_purch_price",             precision: 8, scale: 2
+    t.decimal  "total_sell_price",              precision: 8, scale: 2
+    t.string   "status"
+    t.decimal  "customer_paid",                 precision: 8, scale: 2
+    t.date     "paid_at"
+    t.datetime "created_at",                                                         null: false
+    t.datetime "updated_at",                                                         null: false
   end
 
   create_table "users", force: :cascade do |t|

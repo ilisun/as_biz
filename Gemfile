@@ -18,6 +18,8 @@ gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-ra
 gem 'ajax-datatables-rails', '0.2.1'
 gem 'kaminari'
 gem 'cocoon'
+gem 'best_in_place', github: 'bernat/best_in_place'
+gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations'
 
 gem 'font-awesome-rails'
 

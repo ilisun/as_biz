@@ -4,7 +4,7 @@ class CreateCarModifications < ActiveRecord::Migration
       t.integer :id_car_modification
       t.integer :id_car_serie
       t.integer :id_car_model
-      t.string  :name
+      t.string  :name,               limit: 64,    null: false,  default: ""
       t.integer :start_production_year
       t.integer :end_production_year
 

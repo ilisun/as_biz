@@ -1,4 +1,5 @@
 class CarModel < ActiveRecord::Base
+  has_many :auto_car
 
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file.path, extension: File.extname(file.original_filename))

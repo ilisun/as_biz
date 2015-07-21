@@ -20,7 +20,7 @@ class ProductDatatable < AjaxDatatablesRails::Base
           record.name,
           record.description,
           record.condition,
-          record.location,
+          record.status,
       ]
     end
   end

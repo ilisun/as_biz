@@ -1,4 +1,5 @@
 class CarSerie < ActiveRecord::Base
+  has_many :auto_car
 
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file.path, extension: File.extname(file.original_filename))
@@ -9,7 +10,6 @@ class CarSerie < ActiveRecord::Base
       t.id_car_model = row[1].gsub(/'/, '')
       t.name = row[2].gsub(/'/, '')
       t.id_car_generation = row[3].gsub(/'/, '')
-
       t.save
     end
   end

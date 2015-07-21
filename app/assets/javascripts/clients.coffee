@@ -9,6 +9,7 @@
 #      'scrollCollapse': true
 #      'paging': false
 #  return
+
 $ ->
   $('#datatable-default').dataTable
     processing: false
@@ -32,7 +33,7 @@ $ ->
 
 $(document).on "page:change", ->
 
-  $("input[data-radio='radio-org']").click (e) ->
+  $("input[data-radio='radio-org']").change (e) ->
     type = $(this).data('type')
     $('.all-content').find('input:text').val('')
     $(".all-content").hide()
@@ -55,22 +56,22 @@ $(document).on "page:change", ->
         $("#client_name").val(last+" "+first+" "+middle)
       form.submit()
 
-
-
-  # подставляем по БИК'у имя банка и корр счет
-  $("#bik_ent, #bik_ind").change (e) ->
-    bik = $("input[id='bik_ent']").val()
-    if !bik
-      bik = $("input[id='bik_ind']").val()
-    banks_path = "/clients/get_banks?bik=#{bik}"
-    if bik
-      $.ajax banks_path,
+  # подставляем города в селект зная country_id
+  $('#client_country_id').click (e) ->
+    e.preventDefault()
+    country_id = $('#client_country_id :selected').val()
+    city_path = "/clients/get_cities?country_id=#{country_id}"
+    if country_id
+      $.ajax city_path,
         type: 'GET'
         dataType: 'script'
 
-  # подставляем города в селект зная country_id
-  $('#client_country_id').change (e) ->
-    e.preventDefault()
+  $('form#new_client').ready (e) ->
+    $("#client_category_0").prop("checked", true)
+    $("#client_type_structure_2").click()
+    $("#client_service").val('частное лицо')
+    $("#client_attraction").val('интернет поиск')
+    $('#client_country_id').val('1')
     country_id = $('#client_country_id :selected').val()
     city_path = "/clients/get_cities?country_id=#{country_id}"
     if country_id
@@ -80,15 +81,3 @@ $(document).on "page:change", ->
 
 
 
-#  удаление в селекте ненужных элементов
-#  cities = $('#client_city_id').html()
-#  $('#client_country_id').change (e) ->
-#    e.preventDefault()
-#    country = $('#client_country_id :selected').text()
-#    options = $(cities).filter("optgroup[label='#{country}']").html()
-#    if options
-#      $('#client_city_id').html(options)
-#      $('#client_city_id').parent().show()
-#    else
-#      $('#client_city_id').empty()
-#      $('#client_city_id').parent().hide()

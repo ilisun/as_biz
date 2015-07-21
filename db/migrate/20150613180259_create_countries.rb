@@ -1,9 +1,10 @@
 class CreateCountries < ActiveRecord::Migration
   def change
     create_table :countries do |t|
-      t.string :name
+      t.integer :id_country
+      t.string  :name,    limit: 32,    null: false,  default: ""
 
-      t.timestamps null: false
+      t.timestamps        null: false
     end
   end
 end

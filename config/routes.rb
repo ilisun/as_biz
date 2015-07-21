@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   get '/autos/get_series', to: 'autos#get_series', as: :get_series
   get '/autos/get_modifications', to: 'autos#get_modifications', as: :get_modifications
 
-  resources :cities
   resources :countries
   resources :autos
   resources :orders
   resources :products
+  resources :delivery_products
 
   resources :clients do
     member do
@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   end
   resources :settings do
     collection { get :set_auto }
+    collection { get :set_bank }
+    collection { get :set_city }
+    collection { get :set_delivery }
   end
   resources :car_series do
     collection { post :import }
@@ -39,6 +42,15 @@ Rails.application.routes.draw do
     collection { post :import }
   end
   resources :banks do
+    collection { post :import }
+  end
+  resources :deliveries do
+    collection { post :import }
+  end
+  resources :cities do
+    collection { post :import }
+  end
+  resources :countries do
     collection { post :import }
   end
 

@@ -1,0 +1,6 @@
+<h2>import_countries_path</h2>
+
+<%= form_tag import_countries_path, multipart: true do %>
+  <%= file_field_tag :file, accept: 'csv, xls, xlsx' %>
+  <%= submit_tag "Import" %>
+<% end %>

@@ -5,11 +5,11 @@ class AutoDatatable < AjaxDatatablesRails::Base
   def_delegators :@view, :link_to, :edit_auto_path, :auto_path
 
   def sortable_columns
-    @sortable_columns ||= ['autos.id','autos.type_auto']
+    @sortable_columns ||= ['autos.id','autos.type_auto', 'car_marks.name', 'car_models.name', 'auto_cars.year', 'auto_cars.gos_number']
   end
 
   def searchable_columns
-    @searchable_columns ||= ['autos.id']
+    @searchable_columns ||= ['autos.id','autos.type_auto', 'car_marks.name', 'car_models.name', 'auto_cars.year', 'auto_cars.gos_number']
   end
 
   private
@@ -18,9 +18,13 @@ class AutoDatatable < AjaxDatatablesRails::Base
     records.map do |record|
       [
         record.id,
-        record.type_auto,
-        record.auto_car.mark,
-        record.auto_car.model,
+        if record.type_auto == 0
+          '<span class="tag label label-primary">Автомобиль</span>'.html_safe
+        elsif record.type_auto == 1
+          '<span class="tag label label-warning">Мотоцикл</span>'.html_safe
+        end,
+        record.auto_car.car_mark.name,
+        record.auto_car.car_model.name,
         record.auto_car.year,
         record.auto_car.gos_number,
         link_to('<i class="fa fa-pencil"></i>'.html_safe, edit_auto_path(record)) + '&nbsp&nbsp'.html_safe +
@@ -30,7 +34,7 @@ class AutoDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-    Auto.includes(:auto_car).all
+    Auto.joins(auto_car: :car_mark).joins(auto_car: :car_model).all
   end
 
 end

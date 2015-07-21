@@ -3600,7 +3600,7 @@ window.theme = {};
 
 }).apply(this, [ window.theme, jQuery ]);
 
-// Widget - Todo
+// Widget
 (function(theme, $) {
 
 	theme = theme || {};

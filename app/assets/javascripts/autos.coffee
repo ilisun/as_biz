@@ -33,18 +33,18 @@ $ ->
       $("#fieldset-"+type+"-content").show()
 
     # подставляем модели авто
-    $('#auto_auto_car_attributes_mark').change (e) ->
+    $('#auto_auto_car_attributes_car_mark_id').change (e) ->
       e.preventDefault()
-      id_car_mark = $('#auto_auto_car_attributes_mark :selected').val()
+      id_car_mark = $('#auto_auto_car_attributes_car_mark_id :selected').val()
       model_path = "/autos/get_models?id_car_mark=#{id_car_mark}"
       if id_car_mark
         $.ajax model_path,
           type: 'GET'
           dataType: 'script'
     # подставляем поколение авто
-    $('#auto_auto_car_attributes_model').change (e) ->
+    $('#auto_auto_car_attributes_car_model_id').change (e) ->
       e.preventDefault()
-      id_car_model = $('#auto_auto_car_attributes_model :selected').val()
+      id_car_model = $('#auto_auto_car_attributes_car_model_id :selected').val()
       generation_path = "/autos/get_generations?id_car_model=#{id_car_model}"
       if id_car_model
         $.ajax generation_path,
@@ -91,7 +91,7 @@ $ ->
           dataType: 'script'
     $('#area_select_client').change (e) ->
       $('#input_select_client').val $('#area_select_client :selected').text()
-    # ??? нужно объединить два ожидания ниже
+    # TODO нужно объединить два ожидания ниже
     $('#autos_modal_ok').click (e) ->
       $('#auto_client_name').val $('#area_select_client :selected').text()
       $('#auto_client_id').val $('#area_select_client :selected').val()
@@ -101,4 +101,6 @@ $ ->
       $('#auto_client_id').val $('#area_select_client :selected').val()
       $('#select_client').modal('hide');
 
+    $('form#new_auto').ready (e) ->
+      $("#auto_type_auto_0").click()
 

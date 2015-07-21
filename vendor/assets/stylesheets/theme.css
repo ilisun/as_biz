@@ -10315,7 +10315,7 @@ ul.simple-post-list li:last-child {
 	border-bottom: none;
 }
 
-/* Widget - Simple Todo List */
+/* Widget - Simple TTodo List*/
 ul.simple-todo-list {
 	list-style: none;
 	padding: 0;
@@ -11010,7 +11010,7 @@ ul.simple-bullet-list li.orange:before {
 	display: none;
 }
 
-/* Widget - Todo List */
+/* Widget - TTodo List */
 ul.widget-todo-list {
 	list-style: none;
 	padding: 0;
@@ -13789,12 +13789,12 @@ html.boxed .mailbox .mailbox-email-list .nano .nano-content {
 .invoice .bill-data .value {
 	display: inline-block;
 	margin-left: 10px;
-	width: 90px;
+	width: 170px;
 }
 
 /* Invoice table */
 .invoice table.table {
-	table-layout: fixed;
+	table-layout: auto;
 }
 
 .invoice table.table > thead:first-child > tr > th {

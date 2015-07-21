@@ -10,4 +10,5 @@ class Client < ActiveRecord::Base
   accepts_nested_attributes_for :client_entity, allow_destroy: true, :reject_if => :all_blank
   accepts_nested_attributes_for :client_individual, allow_destroy: true, :reject_if => :all_blank
   accepts_nested_attributes_for :client_individual_entrep, allow_destroy: true, :reject_if => :all_blank
+
 end

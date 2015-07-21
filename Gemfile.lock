@@ -1,4 +1,20 @@
 GIT
+  remote: git://github.com/DavyJonesLocker/client_side_validations.git
+  revision: 4f43c922f2065054bba2cd56965270c81c4347be
+  specs:
+    client_side_validations (4.2.0)
+      jquery-rails (>= 3.1.2, < 5.0.0)
+      rails (>= 4.0.0, < 4.3.0)
+
+GIT
+  remote: git://github.com/bernat/best_in_place.git
+  revision: 9fa298dd8fe7599cee3ae5f863668367f89ad298
+  specs:
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
+
+GIT
   remote: git://github.com/rweng/jquery-datatables-rails.git
   revision: a2fafcb2c78d817c5ad849d834ed259a1b43c269
   branch: master
@@ -211,11 +227,13 @@ PLATFORMS
 
 DEPENDENCIES
   ajax-datatables-rails (= 0.2.1)
+  best_in_place!
   bootstrap-sass
   capistrano
   capistrano-bundler
   capistrano-rails
   capistrano-rvm
+  client_side_validations!
   cocoon
   coffee-rails (~> 4.1.0)
   devise

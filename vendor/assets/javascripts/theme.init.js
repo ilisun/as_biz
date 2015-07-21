@@ -551,7 +551,7 @@
 
 }).apply(this, [ jQuery ]);
 
-// Widget - Todo
+// Widget
 (function( $ ) {
 
 	'use strict';

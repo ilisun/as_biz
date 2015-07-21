@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  include ApplicationHelper
 
   def index
     respond_to do |format|
@@ -9,12 +10,15 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.number = number_generator(Order)
+  end
 
-    if (Order.count != 0 ) and (/\/\d{2}\//.match(Order.last.number).to_s == "/#{Date.today.strftime("%m")}/") then
-      @order.number = "#{/\d+/.match(Order.last.number).to_s.to_i + 1}/#{Date.today.strftime("%m/%y")}"
-    else
-      @order.number = "1/#{Date.today.strftime("%m/%y")}"
-    end
+  def show
+    @order = Order.find(params[:id])
+  end
+
+  def edit
+    @order = Order.find(params[:id])
   end
 
   def create
@@ -49,7 +53,7 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:client_id, :number, :create_by, :update_by,
                                  :products_attributes => [:article, :manufacturer, :name, :description, :condition,
                                                           :purchase_price, :selling_price, :amount, :total_purch_price,
-                                                          :total_sell_price, :location, :customer_paid, :_destroy])
+                                                          :total_sell_price, :location, :customer_paid, :paid_at, :_destroy])
   end
 
 end

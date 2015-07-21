@@ -1,0 +1,116 @@
+<section class="panel">
+  <div class="panel-body">
+    <div class="invoice">
+      <div class="row">
+        <div class="col-sm-6 mt-md">
+          <h3 class="h3 mt-none mb-sm text-secondary text-bold"><%= @client.name %></h3>
+          <h4 class="h4 m-none text-dark text-bold">8 <%= @client_all.cp_phone %></h4>
+          <address>
+            <br/>
+            <h5 class="h5 m-none text-dark text-bold">Контактное лицо:</h5>
+            Должность: <%= @client_all.cp_position %>
+            <br/>
+            ФИО: <%= @client_all.cp_last_name %> <%= @client_all.cp_first_name %> <%= @client_all.cp_middle_name %>
+            <br/>
+            Дата рождения: <%= @client_all.cp_birthday %>
+            <br/>
+            Дополниельный телефон: <%= @client_all.cp_alt_phone %>
+            <br/>
+            Факс: <%= @client_all.cp_fax %>
+            <br/>
+            E-mail: <%= @client_all.cp_email %>
+          </address>
+        </div>
+        <div class="col-sm-6 text-right mt-md mb-md">
+          <address class="ib mr-xlg">
+            <div class="bill-data text-right">
+              <p class="mb-none">
+                <span class="text-dark">Орг. структура:</span>
+                <span class="value"><%= type_name(@client.type_structure) %></span>
+              </p>
+              <p class="mb-none">
+                <span class="text-dark">Город:</span>
+                <span class="value"><%= @client.city.name %></span>
+              </p>
+              <p class="mb-none">
+                <span class="text-dark">Деятельность:</span>
+                <span class="value"><%= @client.service %></span>
+              </p>
+              <p class="mb-none">
+                <span class="text-dark">Привлечение:</span>
+                <span class="value"><%= @client.attraction %></span>
+              </p>
+            </div>
+          </address>
+          <div class="ib">
+            <%= image_tag("client.png", height: '110', alt: "client") %>
+          </div>
+        </div>
+      </div>
+
+      <div class="well">
+        <div class="tabs tabs-primary">
+          <ul class="nav nav-tabs nav-justified">
+            <li class="active">
+              <a href="#popular10" data-toggle="tab" class="text-center"><i class="fa fa-file-text-o"></i> Реквизиты организации</a>
+            </li>
+            <li>
+              <a href="#buh10" data-toggle="tab" class="text-center"><i class="fa fa-rub"></i> Сверка взаиморасчетов</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div id="popular10" class="tab-pane active">
+              <p>
+                Название компании: <%= @client_all.li_company_name %>
+                <br/>
+                ИНН: <%= @client_all.li_inn %>
+                <br/>
+                НДС: <%= @client_all.li_nds %>
+                <br/>
+                ОГРН: <%= @client_all.li_ogrn %>
+                <br/>
+                Юридический адрес: <%= @client_all.li_legal_address %>
+                <br/>
+                Фактический адрес: <%= @client_all.li_legal_address %>
+              </p>
+              <p>
+                Номер счета: <%= @client_all.bd_checking_account %>
+                <br/>
+                БИК банка: <%= @client_all.bd_bank_bik %>
+              </p>
+            </div>
+            <div id="buh10" class="tab-pane">
+              <p>
+                Должность: <%= @client_all.bc_position %>
+                <br/>
+                ФИО: <%= @client_all.bc_last_name %> <%= @client_all.bc_first_name %> <%= @client_all.bc_middle_name %>
+                <br/>
+                Телефон: <%= @client_all.bc_phone %>
+                <br/>
+                E-mail: <%= @client_all.bc_email %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <blockquote class="primary">
+        <p><%= @client.comment %></p>
+        <small>Комментарий, <cite title="date"><%= @client.created_at %></cite></small>
+      </blockquote>
+    </div>
+
+    <div class="text-right mr-lg">
+      <%= link_to clients_path do %>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-default">OK</button>
+      <% end %>
+      <%= link_to edit_client_path do %>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-success">Редактировать</button>
+      <% end %>
+      <%= link_to client_path, method: :delete, data: { confirm: 'Вы действительно хотите удалить запись?' } do %>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-danger">Удалить</button>
+      <% end %>
+    </div>
+  </div>
+
+
+</section>

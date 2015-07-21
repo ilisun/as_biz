@@ -1,7 +1,10 @@
 //= require jquery
+//= require best_in_place
+//= require best_in_place.jquery-ui
 //= require jquery_ujs
 //= require bootstrap
 //= require cocoon
+//= require rails.validations
 
 //= require modernizr/modernizr
 //= require jquery-browser-mobile/jquery.browser.mobile
@@ -14,6 +17,7 @@
 //= require select2/select2
 //= require ios7-switch/ios7-switch
 //= require jquery-autosize/jquery.autosize
+//= require bootstrap-fileupload/bootstrap-fileupload.min
 
 //= require turbolinks
 //= require jquery.turbolinks
