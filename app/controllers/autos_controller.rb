@@ -1,4 +1,7 @@
 class AutosController < ApplicationController
+  before_action :authenticate_user!
+
+  authorize_resource
 
   def index
     respond_to do |format|

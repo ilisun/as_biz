@@ -1,4 +1,7 @@
 class CarModelsController < ApplicationController
+  before_action :authenticate_user!
+
+  authorize_resource
 
   def import
     CarModel.import(params[:file])

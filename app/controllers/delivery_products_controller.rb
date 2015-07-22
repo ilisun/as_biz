@@ -1,4 +1,7 @@
 class DeliveryProductsController < ApplicationController
+  before_action :authenticate_user!
+
+  authorize_resource
 
   def show
     @delivery_product = DeliveryProduct.find(params[:id])

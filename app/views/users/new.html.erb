@@ -1,0 +1,113 @@
+<%= render 'page_header' %>
+
+<div class="row">
+  <div class="col-lg-12">
+    <%= form_for @user, :html => {class: 'form-horizontal'} do |f| %>
+      <section class="panel">
+        <header class="panel-heading">
+          <h2 class="panel-title">Новый пользователь</h2>
+        </header>
+        <div class="panel-body">
+          <h4 class="mb-xlg">Регистрация</h4>
+          <fieldset>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="inputSuccess">Логин <span class="required">*</span></label>
+              <div class="col-md-6">
+                <%= f.text_field :username, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="inputSuccess">Фамилия <span class="required">*</span></label>
+              <div class="col-md-6">
+                <%= f.text_field :last_name, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="inputSuccess">Имя <span class="required">*</span></label>
+              <div class="col-md-6">
+                <%= f.text_field :first_name, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="inputSuccess">Отчество </label>
+              <div class="col-md-6">
+                <%= f.text_field :middle_name, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="inputSuccess">Пол </label>
+              <div class="col-md-6">
+                <%= f.select :gender, [['мужской'], ['женский']], {:include_blank => true}, {:class => 'form-control mb-md'} %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="inputSuccess">Дата рождения </label>
+              <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </span>
+                  <%= f.text_field :birthday, class: 'form-control', id: 'date', 'data-plugin-masked-input' => '', 'data-input-mask' => '99/99/9999', :placeholder => '__/__/____' %>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="inputSuccess">Телефон </label>
+              <div class="col-md-6 control-label">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-phone"></i>
+                    </span>
+                  <%= f.text_field :phone, class: 'form-control', 'data-plugin-masked-input' => '', 'data-input-mask' => '(999) 999-99-99', :placeholder => '(123) 123-12-34' %>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="inputSuccess">Рабочий телефон <span class="required">*</span></label>
+              <div class="col-md-6 control-label">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-phone"></i>
+                    </span>
+                  <%= f.text_field :w_phone, class: 'form-control', 'data-plugin-masked-input' => '', 'data-input-mask' => '(999) 999-99-99', :placeholder => '(123) 123-12-34' %>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="inputSuccess">E-mail</label>
+              <div class="col-md-6">
+                <%= f.email_field :email, class: 'form-control' %>
+              </div>
+            </div>
+          </fieldset>
+
+          <hr class="dotted tall">
+          <h4 class="mb-xlg">Пароль</h4>
+          <fieldset>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="inputSuccess">Пароль</label>
+              <div class="col-md-6">
+                <%= f.password_field :password, :autocomplete => "off", class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="inputSuccess">Подтверждение пароля </label>
+              <div class="col-md-6">
+                <%= f.password_field :password_confirmation, :autocomplete => "off", class: 'form-control' %>
+              </div>
+            </div>
+          </fieldset>
+
+        </div>
+        <footer class="panel-footer">
+          <div class="row">
+            <div class="col-sm-9 col-sm-offset-3">
+              <%= f.submit "Сохранить", class: 'btn btn-primary' %>
+              <%= link_to 'Назад', users_path, class: "btn btn-default" %>
+            </div>
+          </div>
+        </footer>
+      </section>
+    <% end %>
+  </div>
+</div>

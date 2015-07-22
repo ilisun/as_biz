@@ -12,9 +12,13 @@ Rails.application.routes.draw do
   resources :countries
   resources :autos
   resources :orders
+  resources :users
   resources :products
   resources :delivery_products
 
+  resource :user, only: [:edit] do
+    collection { patch :update_password }
+  end
   resources :clients do
     member do
       get :select_client, action: :select_client, :as => :select_client

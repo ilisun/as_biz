@@ -1,4 +1,7 @@
 class DeliveriesController < ApplicationController
+  before_action :authenticate_user!
+
+  authorize_resource
 
   respond_to :html, :json
 

@@ -1,1 +1,24 @@
+<%= render 'page_header' %>
 
+<div class="row">
+  <div class="col-md-12">
+    <section class="panel">
+      <div class="panel-body">
+        <table class="table table-bordered table-striped mb-none", id="datatable-user", data-source="<%= users_path(format: :json) %>">
+          <thead>
+          <tr>
+            <th>№</th>
+            <th>Логин</th>
+            <th>ФИО</th>
+            <th>Рабочий телефон</th>
+            <th>E-mail</th>
+            <th>Действие</th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
