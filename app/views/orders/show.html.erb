@@ -84,8 +84,15 @@
     </div>
 
     <div class="text-right mr-lg">
-      <a href="#" class="btn btn-default">Submit Invoice</a>
-      <a href="pages-invoice-print.html" target="_blank" class="btn btn-primary ml-sm"><i class="fa fa-print"></i> Print</a>
+      <%= link_to orders_path do %>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-default">OK</button>
+      <% end %>
+      <%= link_to edit_order_path do %>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-success">Редактировать</button>
+      <% end %>
+      <%= link_to order_path, method: :delete, data: { confirm: 'Вы действительно хотите удалить запись?' } do %>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-danger">Удалить</button>
+      <% end %>
     </div>
   </div>
 </section>

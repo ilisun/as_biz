@@ -3,7 +3,7 @@ class CreateCarSeries < ActiveRecord::Migration
     create_table :car_series do |t|
       t.integer :id_car_serie
       t.integer :id_car_model
-      t.string  :name,               limit: 64,    null: false,  default: ""
+      t.string  :name,               limit: 128
       t.integer :id_car_generation
 
       t.timestamps null: false

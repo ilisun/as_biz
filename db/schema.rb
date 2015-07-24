@@ -40,63 +40,63 @@ ActiveRecord::Schema.define(version: 20150722091500) do
   end
 
   create_table "banks", force: :cascade do |t|
-    t.string   "full_name",    limit: 128, default: "", null: false
-    t.string   "name",         limit: 96,  default: "", null: false
-    t.string   "city",         limit: 32,  default: "", null: false
-    t.string   "bik",          limit: 16,  default: "", null: false
-    t.string   "corr_account", limit: 32,  default: "", null: false
+    t.string   "full_name",    limit: 128, default: ""
+    t.string   "name",         limit: 96,  default: ""
+    t.string   "city",         limit: 32,  default: ""
+    t.string   "bik",          limit: 16,  default: ""
+    t.string   "corr_account", limit: 32,  default: ""
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
   end
 
   create_table "car_generations", force: :cascade do |t|
     t.integer  "id_car_generation"
-    t.string   "name",              limit: 64, default: "", null: false
+    t.string   "name",              limit: 64
     t.integer  "id_car_model"
     t.string   "year_begin"
     t.string   "year_end"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "car_marks", force: :cascade do |t|
     t.integer  "id_car_mark"
-    t.string   "name",        limit: 32, default: "", null: false
-    t.string   "name_rus",    limit: 32, default: "", null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "name",        limit: 32
+    t.string   "name_rus",    limit: 32
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "car_models", force: :cascade do |t|
     t.integer  "id_car_model"
     t.integer  "id_car_mark"
-    t.string   "name",         limit: 64, default: "", null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.string   "name",         limit: 64
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "car_modifications", force: :cascade do |t|
     t.integer  "id_car_modification"
     t.integer  "id_car_serie"
     t.integer  "id_car_model"
-    t.string   "name",                  limit: 64, default: "", null: false
+    t.string   "name",                  limit: 128
     t.integer  "start_production_year"
     t.integer  "end_production_year"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "car_series", force: :cascade do |t|
     t.integer  "id_car_serie"
     t.integer  "id_car_model"
-    t.string   "name",              limit: 64, default: "", null: false
+    t.string   "name",              limit: 128
     t.integer  "id_car_generation"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "cities", force: :cascade do |t|
-    t.string   "name",       limit: 32, default: "", null: false
+    t.string   "name",       limit: 32, default: ""
     t.integer  "country_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
@@ -199,31 +199,31 @@ ActiveRecord::Schema.define(version: 20150722091500) do
 
   create_table "countries", force: :cascade do |t|
     t.integer  "id_country"
-    t.string   "name",       limit: 32, default: "", null: false
+    t.string   "name",       limit: 32, default: ""
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
 
   create_table "deliveries", force: :cascade do |t|
     t.string   "number"
-    t.string   "doc_number", limit: 32,                         default: "", null: false
+    t.string   "doc_number", limit: 32,                         default: "",  null: false
     t.date     "doc_date"
-    t.decimal  "total_pay",             precision: 8, scale: 2
+    t.decimal  "total_pay",             precision: 8, scale: 2, default: 0.0
     t.date     "take_at"
     t.string   "status"
-    t.datetime "created_at",                                                 null: false
-    t.datetime "updated_at",                                                 null: false
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
   end
 
   create_table "delivery_products", force: :cascade do |t|
     t.string   "delivery_id"
-    t.string   "article",      limit: 32,                         default: "", null: false
-    t.string   "name",         limit: 64,                         default: "", null: false
-    t.string   "manufacturer", limit: 32,                         default: "", null: false
+    t.string   "article",      limit: 32,                         default: "",  null: false
+    t.string   "name",         limit: 64,                         default: "",  null: false
+    t.string   "manufacturer", limit: 32,                         default: "",  null: false
     t.integer  "amount"
-    t.decimal  "total_price",             precision: 8, scale: 2
-    t.datetime "created_at",                                                   null: false
-    t.datetime "updated_at",                                                   null: false
+    t.decimal  "total_price",             precision: 8, scale: 2, default: 0.0
+    t.datetime "created_at",                                                    null: false
+    t.datetime "updated_at",                                                    null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -240,21 +240,21 @@ ActiveRecord::Schema.define(version: 20150722091500) do
   create_table "products", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "delivery_id"
-    t.string   "article",           limit: 32,                          default: "", null: false
+    t.string   "article",           limit: 32,                          default: "",  null: false
     t.string   "manufacturer",      limit: 32
     t.string   "name",              limit: 32
     t.string   "description",       limit: 128
     t.string   "condition"
-    t.decimal  "purchase_price",                precision: 8, scale: 2
-    t.decimal  "selling_price",                 precision: 8, scale: 2
-    t.integer  "amount"
-    t.decimal  "total_purch_price",             precision: 8, scale: 2
-    t.decimal  "total_sell_price",              precision: 8, scale: 2
+    t.decimal  "purchase_price",                precision: 8, scale: 2, default: 0.0
+    t.decimal  "selling_price",                 precision: 8, scale: 2, default: 0.0
+    t.integer  "amount",                                                default: 1,   null: false
+    t.decimal  "total_purch_price",             precision: 8, scale: 2, default: 0.0
+    t.decimal  "total_sell_price",              precision: 8, scale: 2, default: 0.0
     t.string   "status"
-    t.decimal  "customer_paid",                 precision: 8, scale: 2
+    t.decimal  "customer_paid",                 precision: 8, scale: 2, default: 0.0
     t.date     "paid_at"
-    t.datetime "created_at",                                                         null: false
-    t.datetime "updated_at",                                                         null: false
+    t.datetime "created_at",                                                          null: false
+    t.datetime "updated_at",                                                          null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -275,6 +275,7 @@ ActiveRecord::Schema.define(version: 20150722091500) do
     t.string   "last_name",              limit: 32, default: "", null: false
     t.string   "first_name",             limit: 32, default: "", null: false
     t.string   "middle_name",            limit: 32
+    t.string   "position",               limit: 32
     t.string   "gender",                 limit: 16
     t.date     "birthday"
     t.string   "phone",                  limit: 32

@@ -16,6 +16,10 @@ class DeliveriesController < ApplicationController
     @delivery = Delivery.find(params[:id])
   end
 
+  def compare
+    @delivery = Delivery.find(params[:id])
+  end
+
   def import
     Delivery.import(params[:file])
     # TODO разобраться как правильно указать id для редиректа, пока сделано так

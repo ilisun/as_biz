@@ -10,7 +10,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string    :condition # состояние детали [новая, б/у]
       t.decimal   :purchase_price,    :precision => 8, :scale => 2,  default: 0.0
       t.decimal   :selling_price,     :precision => 8, :scale => 2,  default: 0.0
-      t.integer   :amount # колличество
+      t.integer   :amount,            null: false,  default: 1
       t.decimal   :total_purch_price, :precision => 8, :scale => 2,  default: 0.0
       t.decimal   :total_sell_price,  :precision => 8, :scale => 2,  default: 0.0
       t.string    :status # статус детали [в обработке, заказана у поставщика, отправлена к нам, отправлена клиенту, доставлена клиенту]

@@ -8,83 +8,72 @@
             <i class="fa fa-times" style="font-size: 26px;" aria-hidden="true"></i>
           <% end %>
         </div>
-
         <h2 class="panel-title">Запчасть</h2>
       </header>
       <div class="panel-body">
-
         <div class="row form-group">
           <div class="col-lg-3">
-            <%= f.text_field :article, class: 'form-control', placeholder: 'Артикул' %>
+            <label class="control-label">Артикул</label>
+            <%= f.text_field :article, class: 'form-control' %>
           </div>
-
           <div class="mb-md hidden-lg hidden-xl"></div>
-
           <div class="col-lg-3">
-            <%= f.text_field :manufacturer, class: 'form-control', placeholder: 'Производитель' %>
+            <label class="control-label">Производитель</label>
+            <%= f.text_field :manufacturer, class: 'form-control' %>
           </div>
-
           <div class="mb-md hidden-lg hidden-xl"></div>
-
           <div class="col-lg-3">
-            <%= f.text_field :name, class: 'form-control', placeholder: 'Наименование' %>
+            <label class="control-label">Наименование</label>
+            <%= f.text_field :name, class: 'form-control' %>
           </div>
-
           <div class="mb-md hidden-lg hidden-xl"></div>
-
           <div class="col-lg-3">
-            <%= f.text_field :description, class: 'form-control', placeholder: 'Описание' %>
+            <label class="control-label">Описание</label>
+            <%= f.text_field :description, class: 'form-control' %>
           </div>
         </div>
-
         <div class="row form-group">
           <div class="col-lg-3">
-            <%= f.select :condition, [['новая'], ['б/у']], {:prompt => 'Состояние...'}, {:class => 'form-control mb-md'} %>
+            <label class="control-label">Новая или б/у</label>
+            <%= f.select :condition, [['новая'], ['б/у']], {:prompt => 'Состояние...'}, {:class => 'form-control'} %>
           </div>
-
           <div class="mb-md hidden-lg hidden-xl"></div>
-
           <div class="col-lg-3">
-            <%= f.text_field :purchase_price, class: 'form-control', placeholder: 'Цена закуп.' %>
+            <label class="control-label">Цена закуп.</label>
+            <%= f.text_field :purchase_price, class: 'form-control' %>
           </div>
-
           <div class="mb-md hidden-lg hidden-xl"></div>
-
           <div class="col-lg-3">
-            <%= f.text_field :selling_price, class: 'form-control', placeholder: 'Цена прод.' %>
+            <label class="control-label">Цена прод.</label>
+            <%= f.text_field :selling_price, class: 'form-control' %>
           </div>
-
           <div class="mb-md hidden-lg hidden-xl"></div>
-
           <div class="col-lg-3">
-            <%= f.text_field :amount, class: 'form-control', placeholder: 'Кол-во, шт.' %>
+            <label class="control-label">Кол-во, шт.</label>
+            <%= f.text_field :amount, class: 'form-control' %>
           </div>
         </div>
-
         <div class="row form-group">
           <div class="col-lg-3">
-            <%= f.text_field :total_purch_price, class: 'form-control', placeholder: 'Итог закуп.' %>
+            <label class="control-label">Итог закуп.</label>
+            <%= f.text_field :total_purch_price, class: 'form-control' %>
           </div>
-
           <div class="mb-md hidden-lg hidden-xl"></div>
-
           <div class="col-lg-3">
-            <%= f.text_field :total_sell_price, class: 'form-control', placeholder: 'Итог прод.' %>
+            <label class="control-label">Итог прод.</label>
+            <%= f.text_field :total_sell_price, class: 'form-control' %>
           </div>
-
           <div class="mb-md hidden-lg hidden-xl"></div>
-
           <div class="col-lg-3">
-            <%= f.select :status, [['в обработке'], ['заказана у поставщика'], ['отправлена к нам'], ['отправлена клиенту'], ['доставлена клиенту']], {:prompt => 'Нахождение...'}, {:class => 'form-control mb-md'} %>
+            <label class="control-label">Статус</label>
+            <%= f.select :status, [['в обработке'], ['заказана у поставщика'], ['отправлена к нам'], ['отправлена клиенту'], ['доставлена клиенту']], {:prompt => 'Статус...'}, {:class => 'form-control'} %>
           </div>
-
           <div class="mb-md hidden-lg hidden-xl"></div>
-
           <div class="col-lg-3">
-            <%= f.text_field :customer_paid, class: 'form-control', placeholder: 'Оплачено клиентом' %>
+            <label class="control-label">Оплачено клиентом</label>
+            <%= f.text_field :customer_paid, class: 'form-control' %>
           </div>
         </div>
-
       </div>
     </section>
   </div>

@@ -66,6 +66,25 @@ $(document).on "page:change", ->
         type: 'GET'
         dataType: 'script'
 
+  # подставляем реквизиты Банка по БИКу
+  $('#bik_ent').focusout (e) ->
+    e.preventDefault()
+    bik_bank = $('#bik_ent').val()
+    get_bik_bank = "/clients/get_banks?bik=#{bik_bank}"
+    if bik_bank
+      $.ajax get_bik_bank,
+        type: 'GET'
+        dataType: 'script'
+
+  $('#bik_ind').focusout (e) ->
+    e.preventDefault()
+    bik_bank = $('#bik_ind').val()
+    get_bik_bank = "/clients/get_banks?bik=#{bik_bank}"
+    if bik_bank
+      $.ajax get_bik_bank,
+        type: 'GET'
+        dataType: 'script'
+
   $('form#new_client').ready (e) ->
     $("#client_category_0").prop("checked", true)
     $("#client_type_structure_2").click()

@@ -1,7 +1,6 @@
 class SettingsController < ApplicationController
   before_action :authenticate_user!
 
-  authorize_resource
 
   def set_auto
   end

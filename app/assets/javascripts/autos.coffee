@@ -51,18 +51,18 @@ $ ->
           type: 'GET'
           dataType: 'script'
     # подставляем серию авто
-    $('#auto_auto_car_attributes_generation').change (e) ->
+    $('#auto_auto_car_attributes_car_generation_id').change (e) ->
       e.preventDefault()
-      id_car_generation = $('#auto_auto_car_attributes_generation :selected').val()
+      id_car_generation = $('#auto_auto_car_attributes_car_generation_id :selected').val()
       serie_path = "/autos/get_series?id_car_generation=#{id_car_generation}"
       if id_car_generation
         $.ajax serie_path,
           type: 'GET'
           dataType: 'script'
     # подставляем модификацию авто
-    $('#auto_auto_car_attributes_serie').change (e) ->
+    $('#auto_auto_car_attributes_car_serie_id').change (e) ->
       e.preventDefault()
-      id_car_serie = $('#auto_auto_car_attributes_serie :selected').val()
+      id_car_serie = $('#auto_auto_car_attributes_car_serie_id :selected').val()
       modification_path = "/autos/get_modifications?id_car_serie=#{id_car_serie}"
       if id_car_serie
         $.ajax modification_path,

@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-sm-5 mt-md">
             <h2 class="h2 mt-none mb-sm text-secondary text-bold"><%= @delivery.number %></h2>
-            <h4 class="h4 m-none text-dark text-bold">Товарная накладная</h4>
+            <h4 class="h4 m-none text-dark text-bold">СОПОСТОВЛЕНИЕ: Товарная накладная</h4>
           </div>
           <div class="col-sm-7 text-right mt-md mb-md">
             <address class="ib mr-xlg">
@@ -48,16 +48,45 @@
           </tr>
           </thead>
           <tbody>
-            <% @delivery.delivery_products.each_with_index do |dp, index| %>
-              <tr>
-                <td><%= index + 1 %></td>
-                <td class="text-semibold text-dark"><%= best_in_place dp, :article, :inner_class => 'form-control', :type => :input %></td>
-                <td><%= best_in_place dp, :name, :inner_class => 'form-control', :type => :input %></td>
-                <td><%= best_in_place dp, :manufacturer, :inner_class => 'form-control', :type => :input %></td>
-                <td class="text-center"><%= best_in_place dp, :amount, :inner_class => 'form-control', :type => :input %></td>
-                <td class="text-center"><%= best_in_place dp, :total_price, :inner_class => 'form-control', :type => :input %></td>
-              </tr>
-            <% end %>
+          <% @delivery.delivery_products.each_with_index do |dp, index| %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td class="text-semibold text-dark"><%= dp.article %></td>
+              <td><%= dp.name %></td>
+              <td><%= dp.manufacturer %></td>
+              <td class="text-center"><%= dp.amount %></td>
+              <td class="text-center"><%= dp.total_price %></td>
+            </tr>
+
+
+
+            <tr class="details">
+              <td class="details" colspan="6">
+                <table class="table mb-none">
+                  <tbody>
+                    <% compare_product(dp.article).each_with_index do |product, index| %>
+                      <% if index == 0 %>
+                        <tr class="b-top-none">
+                      <% else %>
+                        <tr>
+                      <% end %>
+
+                      <td>
+                        <label class="mb-none"><%= product.order.client.name %></label>
+                      </td>
+
+                      <td>
+                        <%= product.id %>
+                      </td>
+
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+
+          <% end %>
           </tbody>
         </table>
       </div>
@@ -82,12 +111,8 @@
       <%= link_to deliveries_path do %>
         <button type="button" class="mb-xs mt-xs mr-xs btn btn-default">OK</button>
       <% end %>
-      <%= link_to compare_deliveries_path(:id => params[:id]) do %>
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-success">Сопоставить</button>
-      <% end %>
-      <%= link_to delivery_path, method: :delete, data: { confirm: 'Вы действительно хотите удалить запись?' } do %>
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-danger">Удалить</button>
-      <% end %>
+
+
     </div>
   </div>
 </section>

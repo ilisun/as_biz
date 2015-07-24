@@ -37,6 +37,7 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+
     if @order.update(order_params)
       redirect_to @order
     else
@@ -54,7 +55,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:client_id, :number, :create_by, :update_by,
-                                 :products_attributes => [:article, :manufacturer, :name, :description, :condition,
+                                 :products_attributes => [:id, :article, :manufacturer, :name, :description, :condition,
                                                           :purchase_price, :selling_price, :amount, :total_purch_price,
                                                           :total_sell_price, :location, :customer_paid, :paid_at, :_destroy])
   end

@@ -1,5 +1,4 @@
 class Delivery < ActiveRecord::Base
-  has_many :products
   has_many :delivery_products, primary_key: :number, dependent: :destroy
 
   def self.import(file)

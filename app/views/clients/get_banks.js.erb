@@ -1,2 +1,8 @@
-$("input:text[name=bankName]").val("<%= j @banks[0].full_name.html_safe %>");
-$("input:text[name=bankKorr]").val("<%= j @banks[0].corr_account.html_safe %>");
+if ( $("#bik_ind").val() == "" ) {
+  $("input:text[name=bankNameEnt]").val("<%= j @banks[0].full_name.html_safe %>");
+  $("input:text[name=bankKorrEnt]").val("<%= j @banks[0].corr_account.html_safe %>");
+} else if ( $("#bik_ent").val() == "" ) {
+  $("input:text[name=bankNameInd]").val("<%= j @banks[0].full_name.html_safe %>");
+  $("input:text[name=bankKorrInd]").val("<%= j @banks[0].corr_account.html_safe %>");
+}
+
