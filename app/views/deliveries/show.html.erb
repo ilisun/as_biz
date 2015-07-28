@@ -82,7 +82,7 @@
       <%= link_to deliveries_path do %>
         <button type="button" class="mb-xs mt-xs mr-xs btn btn-default">OK</button>
       <% end %>
-      <%= link_to compare_deliveries_path(:id => params[:id]) do %>
+      <%= link_to compare_products_path(:id => @delivery.id) do %>
         <button type="button" class="mb-xs mt-xs mr-xs btn btn-success">Сопоставить</button>
       <% end %>
       <%= link_to delivery_path, method: :delete, data: { confirm: 'Вы действительно хотите удалить запись?' } do %>

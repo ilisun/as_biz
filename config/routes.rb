@@ -13,19 +13,20 @@ Rails.application.routes.draw do
   resources :autos
   resources :orders
   resources :users
-  resources :products
   resources :delivery_products
 
   resources :clients            do
-    member do
-      get :select_client, action: :select_client, :as => :select_client
-    end
+    member {
+                 get :select_client, action: :select_client, :as => :select_client
+    }
   end
   resources :settings           do
-    collection { get :set_auto }
-    collection { get :set_bank }
-    collection { get :set_city }
-    collection { get :set_delivery }
+    collection {
+                 get  :set_auto
+                 get  :set_bank
+                 get  :set_city
+                 get  :set_delivery
+    }
   end
   resources :car_series         do
     collection { post :import }
@@ -47,7 +48,12 @@ Rails.application.routes.draw do
   end
   resources :deliveries         do
     collection { post :import }
-    collection { get  :compare }
+  end
+  resources :products           do
+    collection {
+                 get  :compare
+                 put  :update_compare
+    }
   end
   resources :cities             do
     collection { post :import }

@@ -1,5 +1,5 @@
 class DeliveryProduct < ActiveRecord::Base
   belongs_to :delivery
-  has_one :product
+  has_many   :products
 
 end

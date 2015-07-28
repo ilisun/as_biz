@@ -2,10 +2,10 @@ class CreateProducts < ActiveRecord::Migration
   def change
     create_table :products do |t|
       t.integer   :order_id
-      t.integer   :delivery_id
+      t.string    :delivery_product_id
       t.string    :article,           limit: 32,    null: false,  default: ""
       t.string    :manufacturer,      limit: 32
-      t.string    :name,              limit: 32
+      t.string    :name,              limit: 128
       t.string    :description,       limit: 128
       t.string    :condition # состояние детали [новая, б/у]
       t.decimal   :purchase_price,    :precision => 8, :scale => 2,  default: 0.0

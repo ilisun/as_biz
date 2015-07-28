@@ -8,7 +8,7 @@ class DeliveryProductsController < ApplicationController
   end
 
   def update
-    @delivery_product = DeliveryProduct.find params[:id]
+    @delivery_product = DeliveryProduct.find(params[:id])
     @delivery_product.update_attributes(delivery_product_params)
     respond_with_bip(@delivery_product)
   end
@@ -16,7 +16,7 @@ class DeliveryProductsController < ApplicationController
   private
 
   def delivery_product_params
-    params.require(:delivery_product).permit(:delivery_id, :article, :name, :manufacturer, :amount, :total_price)
+    params.require(:delivery_product).permit(:delivery_id, :product_id, :article, :name, :manufacturer, :amount, :total_price)
   end
 
 end

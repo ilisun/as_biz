@@ -217,13 +217,13 @@ ActiveRecord::Schema.define(version: 20150722091500) do
 
   create_table "delivery_products", force: :cascade do |t|
     t.string   "delivery_id"
-    t.string   "article",      limit: 32,                         default: "",  null: false
-    t.string   "name",         limit: 64,                         default: "",  null: false
-    t.string   "manufacturer", limit: 32,                         default: "",  null: false
+    t.string   "article",      limit: 32,                          default: "",  null: false
+    t.string   "name",         limit: 128,                         default: "",  null: false
+    t.string   "manufacturer", limit: 128,                         default: "",  null: false
     t.integer  "amount"
-    t.decimal  "total_price",             precision: 8, scale: 2, default: 0.0
-    t.datetime "created_at",                                                    null: false
-    t.datetime "updated_at",                                                    null: false
+    t.decimal  "total_price",              precision: 8, scale: 2, default: 0.0
+    t.datetime "created_at",                                                     null: false
+    t.datetime "updated_at",                                                     null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -239,22 +239,22 @@ ActiveRecord::Schema.define(version: 20150722091500) do
 
   create_table "products", force: :cascade do |t|
     t.integer  "order_id"
-    t.integer  "delivery_id"
-    t.string   "article",           limit: 32,                          default: "",  null: false
-    t.string   "manufacturer",      limit: 32
-    t.string   "name",              limit: 32
-    t.string   "description",       limit: 128
+    t.string   "delivery_product_id"
+    t.string   "article",             limit: 32,                          default: "",  null: false
+    t.string   "manufacturer",        limit: 32
+    t.string   "name",                limit: 128
+    t.string   "description",         limit: 128
     t.string   "condition"
-    t.decimal  "purchase_price",                precision: 8, scale: 2, default: 0.0
-    t.decimal  "selling_price",                 precision: 8, scale: 2, default: 0.0
-    t.integer  "amount",                                                default: 1,   null: false
-    t.decimal  "total_purch_price",             precision: 8, scale: 2, default: 0.0
-    t.decimal  "total_sell_price",              precision: 8, scale: 2, default: 0.0
+    t.decimal  "purchase_price",                  precision: 8, scale: 2, default: 0.0
+    t.decimal  "selling_price",                   precision: 8, scale: 2, default: 0.0
+    t.integer  "amount",                                                  default: 1,   null: false
+    t.decimal  "total_purch_price",               precision: 8, scale: 2, default: 0.0
+    t.decimal  "total_sell_price",                precision: 8, scale: 2, default: 0.0
     t.string   "status"
-    t.decimal  "customer_paid",                 precision: 8, scale: 2, default: 0.0
+    t.decimal  "customer_paid",                   precision: 8, scale: 2, default: 0.0
     t.date     "paid_at"
-    t.datetime "created_at",                                                          null: false
-    t.datetime "updated_at",                                                          null: false
+    t.datetime "created_at",                                                            null: false
+    t.datetime "updated_at",                                                            null: false
   end
 
   create_table "users", force: :cascade do |t|
